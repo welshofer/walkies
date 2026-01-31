@@ -165,6 +165,18 @@
             .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
         }
         @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+
+        .further-reading { padding: var(--space-xl) var(--space-md); border-top: 1px solid var(--border); }
+        .further-reading-inner { max-width: var(--content-width); margin: 0 auto; }
+        .further-reading-title { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin: 0 0 var(--space-xs); }
+        .further-reading-intro { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .reading-links { display: flex; flex-direction: column; gap: var(--space-md); }
+        .reading-category-title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text); margin: 0 0 var(--space-xs); }
+        .reading-list { list-style: none; padding: 0; margin: 0; }
+        .reading-list li { padding: var(--space-xs) 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .reading-list li:last-child { border-bottom: none; }
+        .reading-list a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .reading-list a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -620,6 +632,28 @@
             <p class="closing-text">You have walked from the medieval heart of Paris to its royal gardens, from the quiet island where time stopped to the grand courtyards where history was made. You crossed the Seine twice, passed through the Latin Quarter where students once spoke Latin, and ended in a cardinal's secret garden. This is Paris: layers upon layers of history, each step revealing another chapter. The metro awaits at Palais Royal-Musée du Louvre, but perhaps you want one more glass of wine first.</p>
             <div class="next-steps">
                 <a href="../index.html" class="next-step-link">Browse More Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="further-reading">
+        <div class="further-reading-inner">
+            <h2 class="further-reading-title">Further Reading</h2>
+            <p class="further-reading-intro">Dive deeper into Paris's art, history, and travel planning.</p>
+            <div class="reading-links">
+                <div class="reading-category">
+                    <h3 class="reading-category-title">Official Resources</h3>
+                    <ul class="reading-list">
+                        <li><a href="https://www.parisinfo.com/" target="_blank" rel="noopener">Paris Convention and Visitors Bureau</a></li>
+                        <li><a href="https://www.louvre.fr/en" target="_blank" rel="noopener">Musée du Louvre</a></li>
+                    </ul>
+                </div>
+                <div class="reading-category">
+                    <h3 class="reading-category-title">Background & History</h3>
+                    <ul class="reading-list">
+                        <li><a href="https://en.wikipedia.org/wiki/Paris" target="_blank" rel="noopener">Wikipedia – Paris</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

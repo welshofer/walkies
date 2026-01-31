@@ -571,6 +571,18 @@
             .stop { break-inside: avoid; }
         }
 
+        .further-reading { padding: var(--space-xl) var(--space-md); border-top: 1px solid var(--border); }
+        .further-reading-inner { max-width: var(--content-width); margin: 0 auto; }
+        .further-reading-title { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin: 0 0 var(--space-xs); }
+        .further-reading-intro { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .reading-links { display: flex; flex-direction: column; gap: var(--space-md); }
+        .reading-category-title { font-family: var(--font-display); font-size: 1rem; font-weight: 600; color: var(--text); margin: 0 0 var(--space-xs); }
+        .reading-list { list-style: none; padding: 0; margin: 0; }
+        .reading-list li { padding: var(--space-xs) 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+        .reading-list li:last-child { border-bottom: none; }
+        .reading-list a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .reading-list a:hover { text-decoration: underline; }
+
         .sr-only {
             position: absolute;
             width: 1px;
@@ -988,6 +1000,28 @@
         <div class="closing-inner">
             <h2 class="closing-title">Until Next Time</h2>
             <p class="closing-text">You've walked through a town that's been called America's coolest small town, and now you understand why. From Moravian settlers who believed in equality before it was fashionable, to the entrepreneurs who created iconic American foods, Lititz has always punched above its weight. The chocolate and pretzels are delicious, but the real treat is the living history you've just experienced. Safe travels home.</p>
+        </div>
+    </section>
+
+    <section class="further-reading">
+        <div class="further-reading-inner">
+            <h2 class="further-reading-title">Further Reading</h2>
+            <p class="further-reading-intro">Dive deeper into Lititz's Moravian heritage and local attractions.</p>
+            <div class="reading-links">
+                <div class="reading-category">
+                    <h3 class="reading-category-title">Official Resources</h3>
+                    <ul class="reading-list">
+                        <li><a href="https://www.lititzpa.com/" target="_blank" rel="noopener">Lititz, PA Official Visitors Guide</a></li>
+                        <li><a href="https://www.moravian.org/" target="_blank" rel="noopener">Moravian Church in America</a></li>
+                    </ul>
+                </div>
+                <div class="reading-category">
+                    <h3 class="reading-category-title">Background & History</h3>
+                    <ul class="reading-list">
+                        <li><a href="https://en.wikipedia.org/wiki/Lititz,_Pennsylvania" target="_blank" rel="noopener">Wikipedia – Lititz, Pennsylvania</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
