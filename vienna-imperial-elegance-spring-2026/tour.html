@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperial Vienna at Your Pace - Vienna, Austria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #7B1E3C;
+            --accent-soft: rgba(123, 30, 60, 0.12);
+            --accent-hover: #5A162C;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #C9A227;
+            --food-soft: rgba(201, 162, 39, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --access-color: #2E7D32;
+            --access-soft: rgba(46, 125, 50, 0.12);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #C75B7A;
+                --accent-soft: rgba(199, 91, 122, 0.15);
+                --accent-hover: #D87A96;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #D4B83D;
+                --food-soft: rgba(212, 184, 61, 0.2);
+                --access-color: #81C784;
+                --access-soft: rgba(129, 199, 132, 0.15);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .badge-accessible { background: var(--access-soft); color: var(--access-color); }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .accessibility-box { background: var(--access-soft); border: 1px solid var(--access-color); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .accessibility-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--access-color); margin-bottom: var(--space-sm); display: flex; align-items: center; gap: var(--space-xs); }
+        .accessibility-list { margin: 0; padding-left: var(--space-md); }
+        .accessibility-list li { margin-bottom: var(--space-xs); font-size: 0.95rem; }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px; height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout.access { border-color: var(--access-color); }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout.access .callout-label { color: var(--access-color); }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Vienna, Austria</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">2 hours</span>
+                <span class="badge badge-distance">1.2 kilometers</span>
+                <span class="badge badge-stops">5 stops</span>
+                <span class="badge badge-accessible">Accessible Route</span>
+            </div>
+            <h1 class="hero-title">Imperial Vienna at Your Pace</h1>
+            <p class="hero-city">Vienna, Austria</p>
+            <p class="hero-subtitle">Habsburg palaces, Mozart monuments, and legendary coffee houses along a gentle, flat route designed for comfort and frequent rest stops.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-vienna-hofburg.jpg" alt="Vienna Hofburg Palace with Michaelerplatz dome in spring">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/vienna-imperial-elegance.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">10:00 AM (finish by noon for lunch)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value">Albertinaplatz (Bus 2A, accessible)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Weather:</span>
+                    <span class="fact-value">10 to 18 degrees C, bring layers</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Free route, Cafe: 15 to 25 EUR each</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="accessibility-box">
+        <h2 class="accessibility-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="4" r="2"/><path d="M12 6v6m0 0l-4 8m4-8l4 8m-8-5h8"/></svg>
+            Accessibility Features
+        </h2>
+        <ul class="accessibility-list">
+            <li><strong>Terrain:</strong> Entirely flat with smooth paved paths. Cobblestone areas have dedicated smooth paver lanes.</li>
+            <li><strong>Rest stops:</strong> Benches every 200 to 300 meters. Indoor seating at cafes along route.</li>
+            <li><strong>Elevators:</strong> Available at Albertina Museum start point.</li>
+            <li><strong>Restrooms:</strong> Accessible facilities at each stop, noted in descriptions.</li>
+            <li><strong>Pace:</strong> Designed for very slow walking, under 1 kilometer per hour. No rushing.</li>
+            <li><strong>Transit:</strong> Bus 2A is a small, accessible electric bus that stops directly at start point.</li>
+        </ul>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map of Vienna Hofburg area">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Cafe</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Albertina Museum Terrace</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Albertinaplatz 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-01-albertina.jpg" alt="Albertina Museum terrace with view of Vienna State Opera">
+            </div>
+
+            <div class="stop-body">
+                <p>This terrace offers one of the best views of the Vienna State Opera and the legendary Hotel Sacher without climbing a single stair. Take the outdoor escalator or elevator from street level to reach the terrace.</p>
+
+                <p>The Albertina was the largest residential Habsburg palace. It now houses one of the most important print rooms in the world with over a million old master prints. The museum is named after Duke Albert of Saxe-Teschen, a son-in-law of Empress Maria Theresa who was a passionate art collector.</p>
+
+                <p>Look for the Sorrows of War statues on the bastion and notice the stunning green roof of the State Opera across the street.</p>
+            </div>
+
+            <div class="callout access">
+                <div class="callout-label">Accessibility</div>
+                <p>Elevator and escalator access from street level. Smooth terrace surface. Benches available on terrace. Accessible restroom in the Albertina entrance hall, free entry to lobby and shop.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">200 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit the terrace at the rear or descend and walk along the flat pavement past the greenhouse, the Palmenhaus, into the Burggarten park. Very easy, smooth pavement the entire way.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.2047,16.3682&destination=48.2038,16.3656&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Burggarten and Mozart Monument</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">25 minutes</span>
+                        <span class="stop-address">Burggarten, Josefsplatz 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-02-mozart.jpg" alt="Mozart monument in Burggarten with spring flowers">
+            </div>
+
+            <div class="stop-body">
+                <p>This was once the private garden for the Emperor, now a beautiful public park featuring Vienna's most famous statue of Wolfgang Amadeus Mozart. Emperor Franz Joseph I used to take his daily walks here.</p>
+
+                <p>Look for the marble statue of Mozart with a relief of his father and sister on the base. In spring, a treble clef made of flowers appears in the grass in front of the monument. The statue was originally near the Opera but was moved here in 1953 to protect it from damage.</p>
+
+                <p>Originally called the Kaisergarten, the Imperial Garden, it was built after Napoleon's troops destroyed the bastion in 1809. It was opened to the public in 1919 after the fall of the Habsburg monarchy.</p>
+            </div>
+
+            <div class="callout access">
+                <div class="callout-label">Accessibility</div>
+                <p>Flat gravel paths that are packed hard and wheelchair friendly. Numerous benches facing the Mozart statue and the pond. The Palmenhaus greenhouse cafe nearby has restrooms for customers.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">Early Break Option</div>
+                <p>The Palmenhaus brasserie in the greenhouse is right here if you need a break earlier in the tour. Ground level entry, spacious interior. Good for Viennese coffee and a seasonal tart, or a full lunch.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">350 meters</span>
+                    <span class="walking-stat">8 to 10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit the park and walk along Augustinerstrasse. This is the longest segment but entirely flat with paved sidewalks. Take your time. The street leads directly to Josefsplatz.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.2038,16.3656&destination=48.2066,16.3672&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Josefsplatz</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Josefsplatz, 1010 Wien</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Often called Vienna's most beautiful square, Josefsplatz houses the National Library and the Spanish Riding School. It is remarkably quiet compared to the bustling streets nearby, a hidden gem even for many visitors.</p>
+
+                <p>Look for the equestrian statue of Emperor Joseph II, son of Maria Theresa. The globe on top of the National Library symbolizes the extent of knowledge held within. The riding school on your left is where the famous Lipizzaner stallions perform.</p>
+
+                <p>This square was used as a filming location for The Third Man. The statue of Joseph II was commissioned by Emperor Francis I, who reputedly said, It is a fitting tribute to the best of sons.</p>
+            </div>
+
+            <div class="callout access">
+                <div class="callout-label">Accessibility</div>
+                <p>Completely paved square, very flat. Stone ledges around the monument base offer seating. For a quiet indoor sit with back support, the Augustinerkirche church nearby has pews. The National Library has accessible toilets but requires entry ticket.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">150 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk through the archway into the Hofburg Inner Courtyard. The tunnel is flat and covered, providing shade or shelter.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.2066,16.3672&destination=48.2077,16.3653&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">In der Burg - Hofburg Inner Courtyard</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">In der Burg, 1010 Wien</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-04-hofburg.jpg" alt="Hofburg Inner Courtyard with Swiss Gate">
+            </div>
+
+            <div class="stop-body">
+                <p>You are standing in the heart of the Habsburg winter residence, surrounded by 700 years of architectural history. This courtyard served as the central marshalling area for the imperial family.</p>
+
+                <p>Look for the Schweizertor, the Swiss Gate, the oldest renaissance gate in Vienna dating back to 1552. It is painted in distinctive red and black. The gate is named after the Swiss Guards who were hired to protect the Emperor in the 18th century, similar to the Vatican Swiss Guard today.</p>
+
+                <p>The monument in the center honors Emperor Francis I. Take a moment to sit on one of the benches and absorb the grandeur of imperial Vienna.</p>
+            </div>
+
+            <div class="callout access">
+                <div class="callout-label">Accessibility</div>
+                <p>The courtyard has cobblestones, but there are smooth, flat paved strips specifically installed for wheelchairs and walkers crossing the courtyard. Look for the granite lines and use those paths. Several benches around the central monument. Accessible public restroom in the Reichskanzleitrakt near the exit to Michaelerplatz.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 5</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">150 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk through the magnificent Michaelertor dome to exit into Michaelerplatz. Use the smooth paver lanes to avoid cobblestone vibration.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.2077,16.3653&destination=48.2089,16.3662&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Michaelerplatz</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Michaelerplatz, 1010 Wien</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>A unique spot where Roman ruins, Imperial architecture, and modern architecture all meet in one small square. This was the main entrance to the palace from the city for centuries.</p>
+
+                <p>Look for the open-air excavation pit showing Roman walls from the settlement of Vindobona, dating back to the 1st century AD. You can view them from street level at the railing without needing to descend any stairs.</p>
+
+                <p>Across the square, notice the Looshaus, the white building without eyebrows, meaning it lacks window ornamentation. When it was built in 1910, Emperor Franz Joseph hated its plain modern facade so much that he ordered the curtains in the Hofburg facing it to be kept closed so he would not have to look at it.</p>
+            </div>
+
+            <div class="callout access">
+                <div class="callout-label">Accessibility</div>
+                <p>Paved square. View Roman ruins from street level railing, no stairs needed. Benches around the perimeter. Cafe Demel is 100 meters away for restrooms and seating.</p>
+            </div>
+        </article>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Cafe Demel</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">Perfect finale</span>
+                        <span class="stop-address">Kohlmarkt 14, 100m from Michaelerplatz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/food-demel.jpg" alt="Cafe Demel interior with Sachertorte and Viennese coffee">
+            </div>
+
+            <div class="stop-body">
+                <p>The imperial bakery and cafe, a Viennese institution since 1786. This is the perfect reward after your walk. Demel was the official supplier of pastries to the Imperial Court.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">What to Order</div>
+                <p>The Sachertorte chocolate cake or the Apfelstrudel with warm vanilla sauce. Their hot chocolate with whipped cream is legendary. Arrive around noon immediately after your walk to avoid the afternoon rush.</p>
+            </div>
+
+            <div class="callout access">
+                <div class="callout-label">Accessibility</div>
+                <p>Step-free entrance, sometimes a small lip. Elevator to upper floors. Historic building but accommodates accessibility needs. Restrooms available for customers.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have experienced the heart of imperial Vienna at a pace that allows you to truly absorb its beauty. From Habsburg palaces to Mozart monuments, from quiet squares to legendary coffee houses, this route proves that Vienna's treasures are accessible to everyone. Consider reserving Cafe Central weeks in advance for a future visit if you want to experience live piano music in stunning surroundings.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026</span>
+        </div>
+    </footer>
+</body>
+</html>
