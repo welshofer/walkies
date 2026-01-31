@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The King of Wines — Barolo, Italy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #722F37;
+            --accent-soft: rgba(114, 47, 55, 0.12);
+            --accent-hover: #5A252C;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #C9A227;
+            --food-soft: rgba(201, 162, 39, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #A85D66;
+                --accent-soft: rgba(168, 93, 102, 0.15);
+                --accent-hover: #C27580;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #D4B83D;
+                --food-soft: rgba(212, 184, 61, 0.2);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .badge-season { background: var(--food-soft); color: var(--food-color); }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px !important; height: 12px !important; min-width: 12px; max-width: 12px; min-height: 12px; max-height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px !important; height: 3px !important; min-height: 3px; max-height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:nth-child(6) { animation-delay: 0.35s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout.wine { border-color: var(--accent); }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout.wine .callout-label { color: var(--accent); }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .wine-education { background: var(--accent-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) 0; }
+        .wine-education-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; color: var(--accent); margin-bottom: var(--space-sm); }
+        .wine-education ul { margin: 0; padding-left: var(--space-md); }
+        .wine-education li { margin-bottom: var(--space-xs); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+        @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Barolo, Italy</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">3 hours</span>
+                <span class="badge badge-distance">3.5 kilometers</span>
+                <span class="badge badge-stops">4 stops</span>
+                <span class="badge badge-season">Truffle Season</span>
+            </div>
+            <h1 class="hero-title">The King of Wines</h1>
+            <p class="hero-city">Barolo, Italy &middot; November</p>
+            <p class="hero-subtitle">A tiny hilltop village, the birthplace of Italy's greatest wine, surrounded by golden Nebbiolo vines during harvest season. Walk the vineyards where legends are made.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-barolo-vineyards.jpg" alt="Barolo village and castle overlooking autumn vineyards with Alps in distance">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/barolo-wine-hills.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">9:30 AM (finish for lunch) or 3 PM (golden hour)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Parking:</span>
+                    <span class="fact-value">Piazza Colbert (Via Roma, 36) or upper lot on Via Lomondo</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Weather:</span>
+                    <span class="fact-value">5 to 12 degrees Celsius, foggy mornings</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Wine tasting: 25 to 35 euros. Lunch: 60+ euros.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map of Barolo village and vineyards">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Castello Falletti di Barolo</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">45 minutes</span>
+                        <span class="stop-address">Piazza Falletti, 12060 Barolo CN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-01-castello.jpg" alt="Castello Falletti medieval fortress overlooking Barolo vineyards">
+            </div>
+
+            <div class="stop-body">
+                <p>This 10th-century fortress is the birthplace of modern Barolo wine. It was here that Marchesa Giulia Colbert Falletti created the dry, age-worthy wine we know today. Before her, Barolo was sweet. She brought in French winemaking techniques and transformed the local Nebbiolo into something extraordinary.</p>
+
+                <p>The castle now houses the WiMu, the Wine Museum, designed by the theatrical set designer Francois Confino. It is a whimsical, sometimes surreal journey through wine culture. Notice the juxtaposition of ancient stone walls with modern, playful installations.</p>
+
+                <p>The last Marchesa left the castle to charity in 1864. It remained a college for 100 years before becoming the museum. Silvio Pellico, the famous Italian writer and patriot, worked here as the Marchesa's librarian after being imprisoned. He wrote extensively about the family's piety and their remarkable wine.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>You do not need to buy a museum ticket to access the panoramic terrace on the main floor or the Enoteca in the basement. Go straight to the terrace for the classic castle-over-vineyards photograph. Look for the Astralabarolo, a sun-dial sculpture on the terrace.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The panoramic terrace offers the defining view of Barolo: medieval stone, rolling vineyards in autumn gold, and the Alps rising in the distance on clear days.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">50 meters</span>
+                    <span class="walking-stat">1 minute</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk across the small Piazza Falletti to the quirky building with the red sign next door.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.6112,7.9422&destination=44.6111,7.9424&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Museo dei Cavatappi</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Piazza Castello, 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>It sounds touristy, but this is a hidden gem. The Corkscrew Museum houses 500 antique corkscrews from around the world, showcasing the evolution of wine service from crude tools to elegant objects of desire.</p>
+
+                <p>Look for the cage corkscrews from the 18th century and the prohibition-era walking stick corkscrews designed to hide alcohol. The collection was assembled by a local pharmacist and enthusiast, Paolo Annibale, who spent a lifetime gathering these curious objects.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>The gift shop sells high-quality local wine posters and books that are hard to find elsewhere. Perfect for a sophisticated souvenir.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">400 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk down Via Roma, the main street. Notice the smell of fermenting grapes, the pomace, in the air during November. Pass the bakeries selling grissini, the breadsticks invented in nearby Turin. Turn right onto Via Vittorio Veneto and head slightly uphill towards the edge of town.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.6111,7.9424&destination=44.6095,7.9400&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Via Vecchia Ravera Vineyard Walk</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">45 minutes</span>
+                        <span class="stop-address">Via Vittorio Veneto / Via Lomondo intersection</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-03-vineyard.jpg" alt="Autumn vineyard path through Nebbiolo vines with golden leaves">
+            </div>
+
+            <div class="stop-body">
+                <p>You cannot understand Barolo without feeling the soil, the terroir. This path takes you out of the tourist center and directly into the prestigious cru vineyards. Walk up Via Vecchia Ravera. It starts paved but turns into a gravel tractor path.</p>
+
+                <p>Notice the soil composition. The light grey and white marl, a mixture of limestone and clay, gives Barolo its structure and characteristic pale color despite the Nebbiolo grape's thin skin. In November, the vines will be blazing yellow and burnt orange, their work for the year complete.</p>
+
+                <p>Walk about 15 to 20 minutes uphill. You will pass the historic Cascina Ravera. Turn around often. You will see the Castle of Barolo framed perfectly against the backdrop of the Alps on a clear day. This is the best photo spot away from the crowds.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Truffle Hunting</div>
+                <p>Look for tartufaia markers, designated truffle zones, in the wooded patches near the vines. November is prime hunting season. You might even see truffle hunters with their dogs working the edges of the forest.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>Turn back toward the village for the classic shot: Castello Falletti rising above the autumn vineyards with the Alps behind. Late afternoon golden hour is magical here.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">500 meters</span>
+                    <span class="walking-stat">15 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Retrace your steps back to town. Instead of returning to the castle, head to the lower part of the village via Via Roma to the yellow historic building with the arches.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.6095,7.9400&destination=44.6105,7.9440&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Cantine Marchesi di Barolo</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">1 hour</span>
+                        <span class="stop-address">Via Roma, 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-04-cantina.jpg" alt="Historic wine cellar with large oak botti barrels">
+            </div>
+
+            <div class="stop-body">
+                <p>This is the historic cellar where modern Barolo was born. While the castle was the residence, this was the production engine. It is still family-owned by the Abbona family and operates as a functioning winery. The Marchesa left these cellars to the people of Piedmont, but they were eventually purchased privately. The Abbonas have preserved the history while continuing to make exceptional wine.</p>
+
+                <p>Look for the colossal 19th-century oak barrels called botti in the historic cellar. Some are still in use. Walking among these massive wooden vessels, you understand the scale and ambition of the original winemakers.</p>
+            </div>
+
+            <div class="callout wine">
+                <div class="callout-label">Wine Tasting</div>
+                <p>Order the I Classici flight for 25 to 35 euros. The must-try comparison: Barolo Cannubi from the famous hill you walked near versus Barolo Sarmassa from a different terroir. Notice how the same grape from different soils creates entirely different wines. Book the Visit to the Historic Cellars online in advance. Reservations are essential in November.</p>
+            </div>
+        </article>
+
+        <div class="wine-education">
+            <h3 class="wine-education-title">Barolo Wine Cheat Sheet</h3>
+            <div class="stop-body">
+                <p><strong>The Grape:</strong> Nebbiolo. It looks light like Pinot Noir but tastes powerful with high tannins and acidity. The name comes from nebbia, the fog that blankets these hills in autumn.</p>
+                <p><strong>The Smell:</strong> Tar and roses is the classic descriptor. In November you will also smell truffles, wet leaves, and cherry.</p>
+                <p><strong>Reading the Label:</strong></p>
+                <ul>
+                    <li><strong>Barolo</strong> is the region (DOCG).</li>
+                    <li><strong>Riserva</strong> means aged at least 5 years. Standard is 38 months.</li>
+                    <li><strong>MGA or Cru Name</strong> like Cannubi or Sarmassa means grapes from one specific, superior vineyard.</li>
+                </ul>
+                <p><strong>Vintage Guide:</strong></p>
+                <ul>
+                    <li><strong>2016:</strong> Legendary, powerful. Save it.</li>
+                    <li><strong>2019/2020:</strong> Excellent, structured.</li>
+                    <li><strong>2018:</strong> Softer, easier to drink now.</li>
+                </ul>
+            </div>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Locanda in Cannubi</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">Lunch: 1.5 hours</span>
+                        <span class="stop-address">Via Crosia, 14 (2 min drive or 15 min walk)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/food-tajarin-barolo.jpg" alt="Tajarin pasta with white truffle and glass of Barolo wine">
+            </div>
+
+            <div class="stop-body">
+                <p>This is the quintessential upscale Barolo experience. Elegant white tablecloths, panoramic windows overlooking the most famous vineyard in Italy, the Cannubi hill. It is a short drive or a pleasant 15-minute walk uphill from town.</p>
+
+                <p>The setting alone is worth the splurge. You will dine with views of the vines that produced the wine in your glass.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">What to Order</div>
+                <p>Tajarin al Tartufo Bianco. These are 30-egg-yolk noodles, silky and rich, with fresh white truffle shaved tableside. Pair with a Barolo Cannubi. For a more casual option, try Osteria La Cantinella in the village center for Brasato al Barolo, beef braised in the local wine.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have walked through the heart of Italian wine culture, from the castle where a Marchesa transformed a sweet local wine into something legendary, through the golden autumn vineyards where Nebbiolo ripens in the fog, to the historic cellars where that wine still ages in colossal oak barrels. The King of Wines has revealed its kingdom. Consider combining this tour with the Alba White Truffle Fair, just 20 minutes away.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+                <a href="alba-truffle-season-fall-2026/tour.html" class="next-step-link">Alba Truffle Fair Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 &middot; For wine lovers in truffle season</span>
+        </div>
+    </footer>
+</body>
+</html>
