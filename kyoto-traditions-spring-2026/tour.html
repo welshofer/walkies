@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Kyoto of Legend — Kyoto, Japan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #5B8C5A;
+            --accent-soft: rgba(91, 140, 90, 0.12);
+            --accent-hover: #4A7349;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #E8A87C;
+            --food-soft: rgba(232, 168, 124, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #7AAF79;
+                --accent-soft: rgba(122, 175, 121, 0.15);
+                --accent-hover: #8BC48A;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #F0B896;
+                --food-soft: rgba(240, 184, 150, 0.2);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px !important; height: 12px !important; min-width: 12px; max-width: 12px; min-height: 12px; max-height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px !important; height: 3px !important; min-height: 3px; max-height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:nth-child(6) { animation-delay: 0.35s; }
+        .stop:nth-child(7) { animation-delay: 0.4s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+        @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Kyoto, Japan</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">3 hours</span>
+                <span class="badge badge-distance">2.5 kilometers</span>
+                <span class="badge badge-stops">5 stops</span>
+            </div>
+            <h1 class="hero-title">The Kyoto of Legend</h1>
+            <p class="hero-city">Kyoto, Japan &middot; Spring</p>
+            <p class="hero-subtitle">Moss gardens, thatched roofs, 1,200 whimsical stone statues, and a bamboo grove without the crowds. The hidden Oku-Saga district, where old Kyoto lives on.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-bamboo-grove.jpg" alt="Sunlight filtering through towering bamboo stalks in Arashiyama">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/kyoto-sagano-arashiyama.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">9:00 AM to reach the bamboo grove before crowds</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value">Otagi Nenbutsu-ji Temple (taxi from JR Saga-Arashiyama)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Transit:</span>
+                    <span class="fact-value">Taxi (1,200 yen) or Bus 94/62 to Otagi-dera-mae</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Temple entries: 1,800 yen. Lunch: 4,000 yen.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map of Sagano and Arashiyama">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Otagi Nenbutsu-ji Temple</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">2-5 Sagatoriimoto Fukatanicho, Ukyo Ward</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-01-otagi.jpg" alt="Moss-covered stone statues with playful expressions at Otagi Nenbutsu-ji">
+            </div>
+
+            <div class="stop-body">
+                <p>This is Kyoto's most whimsical hidden gem, home to 1,200 unique stone statues called rakan that were carved by amateurs under a master sculptor's guidance in the 1980s. Each one has a distinct personality, from drinking sake to holding cats to outright belly-laughing.</p>
+
+                <p>Though the temple dates back to the 8th century, it was destroyed and moved multiple times. The current Twelve Hundred Rakan project was a community restoration effort that brought the temple back to life through art rather than conventional construction.</p>
+
+                <p>In spring, cherry blossoms drift down onto the mossy statues, creating scenes that feel lifted from a Miyazaki film. Far fewer visitors make it this far north, so you may have this magical place nearly to yourself.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Look for the tennis player and photographer statues, proof that the amateur carvers were allowed to inject modern personalities into these holy figures. The acoustics inside the main hall are remarkable. If the caretaker is around, they might demonstrate the forest of sound effect.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The mossy stone statues dusted with fallen cherry petals create an ethereal, otherworldly composition. Get low to capture the statues against the sky and temple buildings.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">400 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit Otagi and turn left, walking downhill. You are now entering the Saga-Toriimoto Preserved Street. Notice the thatched roofs, rare in Kyoto, and traditional machiya architecture. This was historically a funeral path where souls were sent to the afterlife.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=35.0289,135.6603&destination=35.0263,135.6655&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Adashino Nenbutsu-ji Temple</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">25 minutes</span>
+                        <span class="stop-address">17 Sagatoriimoto Adashinocho, Ukyo Ward</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>A hauntingly beautiful contrast to the playful Otagi. This site was historically an exposed burial ground for the poor and forgotten. Today, 8,000 stone stupas stand in solemn memory of those lost souls, arranged in neat rows across the hillside.</p>
+
+                <p>The monk Kukai, one of the most important figures in Japanese Buddhism, established this temple in the 9th century to comfort the souls of the dead who had been abandoned in the Adashino field. Walking among the weathered stones, you feel the weight of centuries of grief transformed into reverence.</p>
+
+                <p>Every August, the Sento Kuyo festival is held here, when thousands of candles are lit among the stones. The effect is mesmerizing, turning the hillside into a sea of flickering light.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Do not miss the path leading up through the bamboo grove at the back of the temple. It is almost identical to the famous Arashiyama Bamboo Grove but usually has zero tourists. This is your quiet bamboo moment before the crowds later.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>From the elevated bamboo path, look back down over the 8,000 stupas for a stunning composition of ancient stones and soaring green stalks.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">500 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Continue downhill along the preserved street. You will pass Saga Toriimoto Tea and Coffee Hijiri, a perfect quick pitstop if you need caffeine. Keep an eye out for bamboo craftsman shops along this road. Many masters work here making baskets and cups by hand.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=35.0263,135.6655&destination=35.0243,135.6686&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Gio-ji Temple</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">25 minutes</span>
+                        <span class="stop-address">32 Sagatoriimoto Kozakacho, Ukyo Ward</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-03-gioji.jpg" alt="Moss garden at Gio-ji Temple with maple trees overhead">
+            </div>
+
+            <div class="stop-body">
+                <p>Gio-ji is famous for its moss garden, carpeted with more than 120 varieties of moss that glow an almost supernatural green, especially after spring rains. The small enclosure is wrapped by tall maple trees and bamboo, creating a secret world that feels removed from time.</p>
+
+                <p>This was a nunnery for women rejected by powerful men. The Tale of the Heike tells of Gio, a dancer who fell out of favor with the warlord Taira no Kiyomori. Heartbroken, she retired here to weep and pray. It is a symbol of tragic romance and the impermanence of worldly favor.</p>
+
+                <p>In spring, the contrast between the vibrant green moss and falling pink cherry blossom petals is extraordinary. Few tourists venture this far north, so you can contemplate the garden in near silence.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Look for the round Yoshino Window in the thatched hut. It casts beautiful shadows and frames the garden like a painting. The monks carefully sweep the moss daily to maintain its immaculate appearance.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">900 meters</span>
+                    <span class="walking-stat">15 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk south through the quiet residential lanes. You will pass Rakushisha, the House of Falling Persimmons, a famous haiku poet's hut worth a quick photo from outside. Follow signs for the Bamboo Forest as the path leads you toward the famous groves.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=35.0243,135.6686&destination=35.0172,135.6713&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Arashiyama Bamboo Grove</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Sagaogurayama Tabuchiyamacho, Ukyo Ward</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>The iconic tunnel of soaring bamboo stalks. The sound of the wind rustling through the bamboo is considered one of the Hundred Soundscapes of Japan, a natural symphony that varies with the season and weather. Look up to see the bamboo swaying against the sky.</p>
+
+                <p>Bamboo was cultivated near temples in this region for centuries, valued for both craft use and its sturdy roots that prevent landslides. Legend says the bamboo protects the nearby shrines from evil spirits approaching from the mountains.</p>
+
+                <p>By entering from the north as you are, you hit the quieter section first. If you started at 9 AM as recommended, you should arrive here around 11:30 AM, before the afternoon crowds descend from the train station.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>If the main path becomes crowded, veer towards the Nonomiya Shrine side paths for a slightly less congested experience. The shrine itself is dedicated to preparing imperial princesses for service at the Ise Grand Shrine and has a unique black torii gate.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>Early in the morning or late afternoon, shafts of light pierce through the bamboo creating dramatic god rays. Shoot straight up into the bamboo canopy for the classic vertigo-inducing perspective.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 5</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">100 meters</span>
+                    <span class="walking-stat">2 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">The bamboo path leads you directly to the north gate of Tenryu-ji. You will see the temple entrance almost immediately upon exiting the grove.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=35.0172,135.6713&destination=35.0157,135.6737&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Tenryu-ji Temple</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">68 Susukinobaba-cho, Saga-Tenryuji, Ukyo-ku</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-05-tenryuji.jpg" alt="Sogenchi Garden at Tenryu-ji Temple with mountains in background">
+            </div>
+
+            <div class="stop-body">
+                <p>A UNESCO World Heritage site and the most important Zen temple in Arashiyama. Built in 1339 by the shogun Ashikaga Takauji, Tenryu-ji has burned down eight times over the centuries but each time was rebuilt following the original design.</p>
+
+                <p>The Sogenchi Garden is one of the few gardens in Japan that survives in its original form from the 14th century. Designed by the legendary Zen master Muso Soseki, it uses shakkei, borrowed scenery, incorporating the Arashiyama mountains into the garden's composition. The mountains appear to rise directly from the pond.</p>
+
+                <p>The garden was designed to be viewed from the Hojo, the Abbot's quarters, calming the mind for Zen meditation. Even amid tourist crowds, pausing on the veranda to contemplate the view offers a moment of genuine tranquility.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Buy the Garden Only ticket for 500 yen to save time and stay outdoors. It allows you to exit through the main gate directly onto the main street, perfect for heading to lunch. The full temple interior is interesting but not essential.</p>
+            </div>
+        </article>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Yudofu Sagano</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">Lunch: 1 hour</span>
+                        <span class="stop-address">45 Susukinobaba-cho, Saga-Tenryuji, Ukyo-ku</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/food-yudofu.jpg" alt="Yudofu tofu meal in traditional Japanese setting">
+            </div>
+
+            <div class="stop-body">
+                <p>Yudofu, simmered tofu, is the signature dish of Arashiyama, made possible by the pure underground water that flows from the mountains. This refined spot has a stunning private garden and embodies the quiet elegance of Kyoto kaiseki cuisine.</p>
+
+                <p>The restaurant occupies a traditional building near the Tenryu-ji main gate. You will be seated overlooking a peaceful garden, a perfect conclusion to a morning spent among temples and moss.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">What to Order</div>
+                <p>The Yudofu Set, approximately 4,000 yen per person. The silky tofu arrives in a pot of kombu broth, accompanied by seasonal side dishes, rice, and pickles. Simple, elegant, and deeply satisfying after a morning of walking.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have explored the hidden heart of Kyoto, from 1,200 whimsical stone statues to 8,000 memorial stupas, from carpets of moss to towering bamboo, and finally to a UNESCO garden designed for Zen contemplation. This is the Kyoto of legend, still alive in the quiet lanes of Sagano. Arashiyama Station is a short walk from Tenryu-ji for trains back to central Kyoto.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=35.0166,135.6803&travelmode=walking" class="next-step-link" target="_blank">Walk to JR Saga-Arashiyama Station</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 &middot; For active couples interested in history and culture</span>
+        </div>
+    </footer>
+</body>
+</html>
