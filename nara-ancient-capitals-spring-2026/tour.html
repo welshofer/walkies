@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ancient Capitals & Sacred Deer — Nara, Japan</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #8B4513;
+            --accent-soft: rgba(139, 69, 19, 0.12);
+            --accent-hover: #6B3410;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            --walk-color: #5B8C5A;
+            --walk-soft: rgba(91, 140, 90, 0.15);
+            --food-color: #E8A87C;
+            --food-soft: rgba(232, 168, 124, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #C4825A;
+                --accent-soft: rgba(196, 130, 90, 0.15);
+                --accent-hover: #D4926A;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AAD79;
+                --walk-soft: rgba(122, 173, 121, 0.2);
+                --food-color: #F0B896;
+                --food-soft: rgba(240, 184, 150, 0.2);
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .tour-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .tour-location {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-md);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.4em 1em;
+            border-radius: 2px;
+        }
+
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .hero-city {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-lg) auto 0;
+            max-width: 420px;
+        }
+
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .quick-facts {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) auto;
+            max-width: var(--content-width);
+        }
+
+        .quick-facts-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .quick-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-sm);
+        }
+
+        .fact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-xs);
+        }
+
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+
+        .tour-map {
+            max-width: var(--wide-width);
+            margin: var(--space-xl) auto;
+            padding: 0 var(--space-md);
+        }
+
+        .tour-map-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+        }
+
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-sm);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { width: 12px; height: 12px; border-radius: 50%; }
+        .legend-marker.stop { background: var(--accent); }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--walk-color); height: 3px; border-radius: 2px; }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .stop {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stop-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .stop-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50%;
+        }
+
+        .stop-number.food { background: var(--food-color); }
+
+        .stop-info { flex: 1; }
+
+        .stop-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 var(--space-xs);
+            color: var(--text);
+        }
+
+        .stop-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .stop-time {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.3em 0.8em;
+            border-radius: 3px;
+        }
+
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+
+        .stop-address {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .stop-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .stop-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stop-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .stop-body p:last-child { margin-bottom: 0; }
+
+        .stop-body a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-soft);
+            text-underline-offset: 2px;
+        }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+
+        .callout-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .callout.tip .callout-title { color: var(--walk-color); }
+        .callout.photo .callout-title { color: var(--photo-color); }
+        .callout.food .callout-title { color: var(--food-color); }
+
+        .callout p { margin: 0; font-size: 0.95rem; }
+
+        .walking-segment {
+            background: var(--walk-soft);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .walking-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .walking-icon { color: var(--walk-color); }
+
+        .walking-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text);
+        }
+
+        .walking-stats {
+            display: flex;
+            gap: var(--space-md);
+            margin-left: auto;
+        }
+
+        .walking-stat {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .walking-directions {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .walking-notice {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+        }
+
+        .directions-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--walk-color);
+            text-decoration: none;
+            padding: 0.4em 0.8em;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .directions-link:hover {
+            background: var(--bg-alt);
+            border-color: var(--walk-color);
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .footer-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+
+        @media print {
+            .header, .footer, .audio-player, .directions-link { display: none; }
+            .stop { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Nara, Japan</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">3 hours</span>
+                <span class="badge badge-distance">4.5 km</span>
+                <span class="badge badge-stops">4 stops + food</span>
+            </div>
+            <h1 class="hero-title">Ancient Capitals & Sacred Deer</h1>
+            <p class="hero-city">Nara, Japan · Spring</p>
+            <p class="hero-subtitle">Imperial history, Buddhist majesty, Shinto nature worship, and the sacred deer who've roamed these grounds for over a thousand years. This is Japan's spiritual heart.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-nara-spring.png" alt="Nara Park in spring with sacred deer, cherry blossoms, and ancient temples">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/nara-ancient-capitals.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value"> 9:00 AM (beat the crowds at Todaiji)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value"> Kintetsu Nara Station (Gyoki Fountain)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Transit:</span>
+                    <span class="fact-value"> 40 min from Osaka-Namba, 35 min from Kyoto</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value"> ~2,500 yen (temple entry + food)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-map.png" alt="Walking tour route map of Nara">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker stop"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- STOP 1: Kofukuji Temple -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Kofukuji Temple</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 min</span>
+                        <span class="stop-address">48 Noboriojicho, Nara</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-01-kofukuji.png" alt="Kofukuji Temple five-storied pagoda in spring">
+            </div>
+
+            <div class="stop-body">
+                <p>The first thing you'll notice is the pagoda—fifty meters of ancient timber reaching toward the sky like a prayer made solid. This isn't just a temple; it was once the true power center of Japan, the family temple of the Fujiwara clan who effectively ruled the country from behind the scenes for centuries.</p>
+
+                <p>Look at the Five-Storied Pagoda carefully. It's the second tallest wooden pagoda in Japan, and it has burned down five times over the centuries. The current structure dates to 1426—which, in Nara terms, makes it "relatively new." Each reconstruction followed the original plans exactly, a testament to the Japanese philosophy of preserving tradition through renewal.</p>
+
+                <p>The newly reconstructed Central Golden Hall gleams in the morning light. Emperor Shomu established this temple in 710 when Nara became Japan's first permanent capital. At its height, Kofukuji controlled the entire province and could even influence imperial succession.</p>
+            </div>
+
+            <div class="callout tip">
+                <p class="callout-title">Insider Tip</p>
+                <p>Skip the paid museum area on a three-hour tour. The free grounds and temple exteriors are magnificent enough, and you'll want that time for the Great Buddha later.</p>
+            </div>
+
+            <div class="callout photo">
+                <p class="callout-title">Photo Op</p>
+                <p>The reflection of the pagoda in Sarusawa Pond, about 200 meters south, is one of Nara's most iconic shots. Best in early morning when the water is still.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 1→2 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Yoshikien Garden</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">600m</span>
+                    <span class="walking-stat">8 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk east from Kofukuji toward the Prefectural Government building. Cross the street and follow signs toward Isuien Garden. Yoshikien is right next door.</p>
+            <p class="walking-notice">Watch for the underground pedestrian tunnels—they double as deer crossings. Yes, the deer have their own tunnels.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=34.6828,135.8322&destination=34.6853,135.8356&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 2: Yoshikien Garden -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Yoshikien Garden</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 min</span>
+                        <span class="stop-address">60-1 Noboriojicho, Nara</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-02-yoshikien.png" alt="Yoshikien moss garden with thatched teahouse">
+            </div>
+
+            <div class="stop-body">
+                <p>Step through the gate and the noise falls away. Yoshikien is Nara's best-kept secret—a quiet respite that feels worlds away from the tourist bustle, even though you're steps from the main attractions.</p>
+
+                <p>The garden unfolds in three distinct sections: a traditional pond garden, a moss garden, and a tea ceremony flower garden. The moss garden is particularly breathtaking in spring, when the green carpet glows almost neon under the dappled light filtering through the maple canopy. Look for the thatched-roof teahouse reflected in the still water—it's the kind of scene that makes you understand why Japanese gardens have inspired artists for centuries.</p>
+
+                <p>This land was originally part of the high priest's residence for Kofukuji Temple. The garden preserves the refined sensibility of Nara's religious elite—beauty achieved through restraint, power expressed through subtlety.</p>
+            </div>
+
+            <div class="callout tip">
+                <p class="callout-title">Insider Tip</p>
+                <p>Free admission for foreign tourists! Just show your passport at the entrance. The famous Isuien garden next door charges about 1,200 yen, but Yoshikien is often quieter and just as beautiful.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 2→3 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Todaiji Temple</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">400m</span>
+                    <span class="walking-stat">5 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit Yoshikien and turn left. Follow signs toward Todaiji—you can't miss the massive Nandaimon Gate rising above the trees ahead.</p>
+            <p class="walking-notice">The deer population density increases dramatically here. Have your camera ready, but don't let them see any paper maps—they eat paper!</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=34.6853,135.8356&destination=34.6889,135.8398&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 3: Todaiji Temple -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Todaiji Temple</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">45 min</span>
+                        <span class="stop-address">406-1 Zoshicho, Nara</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-03-todaiji.png" alt="Todaiji Temple Great Buddha Hall with deer">
+            </div>
+
+            <div class="stop-body">
+                <p>This is the climax. The moment you pass through Nandaimon Gate and see the Great Buddha Hall rising before you, you'll understand why millions make this pilgrimage every year. The building housing the Daibutsu—the Great Buddha—is the largest wooden structure in the world, and somehow it still feels too small for what's inside.</p>
+
+                <p>Before you enter the hall, pause at the Nandaimon Gate. Those fierce wooden statues flanking the entrance are the Nio Guardians, carved in 1203 by the legendary sculptors Unkei and Kaikei. Here's the astonishing part: they completed these massive, intricately detailed statues in just 69 days. That's a miracle of artistic and organizational achievement that still amazes historians.</p>
+
+                <p>Inside, the Daibutsu sits in serene majesty—fifteen meters of bronze Buddha Vairocana, the largest bronze Buddha in the world. Emperor Shomu ordered its construction in 743 to protect Japan from disaster and plague. The project nearly bankrupted the nation. The current hall, rebuilt in 1709, is only two-thirds the size of the original. Let that sink in: this massive building is the small version.</p>
+            </div>
+
+            <div class="callout tip">
+                <p class="callout-title">Insider Tip</p>
+                <p>Look for the wooden pillar near the back with a hole at the bottom. Legend says the hole is the same size as the Buddha's nostril. Crawling through supposedly grants enlightenment. Adults sometimes get stuck, so choose wisely.</p>
+            </div>
+
+            <div class="callout photo">
+                <p class="callout-title">Photo Op</p>
+                <p>The best angle for photographing the Great Buddha is from the right side, not dead center. This captures the depth of the halo and the Buddha's serene expression in profile.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 3→4 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Kasuga Taisha</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">1.2 km</span>
+                    <span class="walking-stat">20 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit Todaiji and turn left, heading up the gentle hill toward Nigatsu-do Hall. Follow the stone-paved path along the base of Mount Wakakusa toward Kasuga Taisha. This quieter route is more scenic than the main road.</p>
+            <p class="walking-notice">You're entering the sacred forest. These trees have been protected for over a thousand years—the atmosphere shifts noticeably. Watch for deer napping in the shade.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=34.6889,135.8398&destination=34.6814,135.8483&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 4: Kasuga Taisha -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Kasuga Taisha Shrine</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 min</span>
+                        <span class="stop-address">160 Kasuganocho, Nara</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-04-kasuga.png" alt="Kasuga Taisha stone lanterns and vermillion shrine">
+            </div>
+
+            <div class="stop-body">
+                <p>The path to Kasuga Taisha is lined with three thousand stone lanterns, each one donated by a worshipper over the centuries. Moss creeps up their sides, and the dappled forest light creates an atmosphere that feels distinctly otherworldly. This is where Shinto nature worship meets aristocratic patronage.</p>
+
+                <p>The Fujiwara clan established this shrine in 768, and the legend explains why Nara's deer are sacred: the deity of Kasuga Taisha is said to have arrived here riding a white deer from distant Kashima. Ever since, the deer have been considered divine messengers, protected by law and custom for over a millennium.</p>
+
+                <p>The vermillion shrine buildings glow against the forest green. If you're visiting in late April or early May, the wisteria trees—especially the famous Sunazuri-no-Fuji—create cascades of purple blooms that seem to pour from the sky.</p>
+            </div>
+
+            <div class="callout tip">
+                <p class="callout-title">Insider Tip</p>
+                <p>Pay the small fee to enter Fujinami-no-ya Hall. It's a darkened room filled with lit bronze lanterns, simulating the magical atmosphere of the biannual lantern festivals. Totally worth it for the atmosphere.</p>
+            </div>
+
+            <div class="callout photo">
+                <p class="callout-title">Photo Op</p>
+                <p>The rows of bronze lanterns hanging under the shrine corridors make for stunning photographs, especially in the soft morning light filtering through.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT TO FOOD -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Lunch</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">1.5 km</span>
+                    <span class="walking-stat">20 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk down the main approach (Sando) lined with stone lanterns. Turn left to cut through Naramachi, the old merchant district, with its traditional machiya townhouses and craft shops. You've earned a meal.</p>
+            <p class="walking-notice">Naramachi is worth exploring if you have extra time—small museums, sake shops, and traditional craft studios hide in the narrow lanes.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=34.6814,135.8483&destination=34.6795,135.8310&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- FOOD STOP -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Hiraso</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">30-45 min</span>
+                        <span class="stop-address">30-1 Imamikadocho, Nara (near Sarusawa Pond)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/food-kakinoha-zushi.png" alt="Kakinoha-zushi, traditional Nara sushi wrapped in persimmon leaves">
+            </div>
+
+            <div class="stop-body">
+                <p>You've walked through a thousand years of Japanese history. Now it's time to taste it.</p>
+
+                <p>Hiraso specializes in kakinoha-zushi, Nara's signature dish: pressed sushi wrapped in persimmon leaves. This isn't a gimmick—it's a preservation technique developed centuries ago, before refrigeration, when mountain communities needed ways to keep fish fresh during the long journey from the coast. The persimmon leaves have natural antibacterial properties, and they impart a subtle, distinctive flavor to the fish.</p>
+
+                <p>The restaurant has been perfecting this tradition for generations. The atmosphere is quiet, refined, and perfect for reflecting on what you've experienced.</p>
+            </div>
+
+            <div class="callout food">
+                <p class="callout-title">What to Order</p>
+                <p>The "Yamato" set includes kakinoha-zushi alongside Miwa somen—thin wheat noodles from nearby Miwa, another regional specialty. Together they're about 1,500 to 2,500 yen per person. Excellent value for an authentic Nara meal.</p>
+            </div>
+
+            <div class="callout tip">
+                <p class="callout-title">Quick Snack Alternative</p>
+                <p>Short on time? Nakatanidou near the station is famous for high-speed mochi pounding—watch the men pound green tea mochi with mallets at lightning speed, then eat it warm for about 200 yen. Eat it immediately; it's never better than that first moment.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Until Next Time</h2>
+            <p class="closing-text">You've walked through Japan's spiritual heart today—from the political power of the Fujiwara clan to the world's largest bronze Buddha, from sacred deer to thousand-year-old lanterns. Nara was Japan's first true capital, and you can feel that weight of history in every stone and timber. The deer will still be here when you return, bowing for crackers as they have for generations. Safe travels.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 30, 2026 · Couple in 50s, history & culture focus</span>
+        </div>
+    </footer>
+</body>
+</html>
