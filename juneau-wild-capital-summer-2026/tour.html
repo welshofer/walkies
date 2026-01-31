@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Loop — Juneau, Alaska</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #1F7A8C;
+            --accent-soft: rgba(31, 122, 140, 0.12);
+            --accent-hover: #166575;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #C9A227;
+            --food-soft: rgba(201, 162, 39, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #3A9AB0;
+                --accent-soft: rgba(58, 154, 176, 0.15);
+                --accent-hover: #4BB0C8;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #D4B83D;
+                --food-soft: rgba(212, 184, 61, 0.2);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .badge-season { background: #FFF3E0; color: #E65100; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px !important; height: 12px !important; min-width: 12px; max-width: 12px; min-height: 12px; max-height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #1F7A8C; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px !important; height: 3px !important; min-height: 3px; max-height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:nth-child(6) { animation-delay: 0.35s; }
+        .stop:nth-child(7) { animation-delay: 0.4s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout.wildlife { border-color: #4CAF50; }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout.wildlife .callout-label { color: #4CAF50; }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+        @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Juneau, Alaska</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">4 hours</span>
+                <span class="badge badge-distance">5.5 kilometers</span>
+                <span class="badge badge-stops">7 stops</span>
+                <span class="badge badge-season">Summer</span>
+            </div>
+            <h1 class="hero-title">The Golden Loop</h1>
+            <p class="hero-city">Juneau, Alaska &middot; August</p>
+            <p class="hero-subtitle">From gold rush history to temperate rainforest wilderness, climb through Alaska's capital to discover spawning salmon, Russian heritage, and a mining valley where nature is reclaiming the past.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-juneau-summer.jpg" alt="Juneau waterfront with mountains and Gastineau Channel in summer">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/juneau-golden-loop.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">9:00 AM (beat the cruise crowds)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value">Seawalk near Tahku Whale Sculpture</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Weather:</span>
+                    <span class="fact-value">Liquid sunshine. Bring rain gear.</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Lunch: 25 to 60 dollars. Museum: 5 dollars.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map of downtown Juneau and Basin Road">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Tahku (The Whale Project)</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Overstreet Park, W 8th St & Egan Dr</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-downtown-waterfront.jpg" alt="Juneau waterfront with cruise ships and mountains">
+            </div>
+
+            <div class="stop-body">
+                <p>Your journey begins at a stunning life-sized bronze sculpture of a breaching humpback whale rising from an infinity pool. It perfectly captures the scale of the wildlife you hope to see during your Alaska adventure.</p>
+
+                <p>The sculpture commemorates the 50th anniversary of Alaska statehood. Stand here on the Seawalk and take in your first views of Gastineau Channel, the waterway that brought gold seekers to these shores over a century ago.</p>
+            </div>
+
+            <div class="callout wildlife">
+                <div class="callout-label">Wildlife Spotting</div>
+                <p>Look up at the light poles. Bald eagles often perch here, surveying the channel for fish. Scan the water for harbor seals bobbing near the docks.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>Stand near the blowhole of the sculpture. It occasionally sprays water simulating a whale spout, making for a fun action photo with the mountains behind.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">800 meters</span>
+                    <span class="walking-stat">15 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Head south along the waterfront Seawalk, then turn left uphill on Gold Street. Prepare for your first steep climb. Juneau is built on a mountainside.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=58.3035,-134.4170&destination=58.3014,-134.4111&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">St. Nicholas Russian Orthodox Church</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">326 5th St, Juneau, AK 99801</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Built in 1893, this octagonal structure with its golden onion dome is one of Juneau's most photographed icons and a testament to the lingering Russian influence in Alaska. It has been in continuous use since the Gold Rush era.</p>
+
+                <p>The church was built largely at the request of the local Tlingit community who had converted to Russian Orthodoxy during the Russian colonial period. Look for the intricate wooden architecture and peek into the small gift shop if it is open.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The best angle is from the street corner looking up at the dome against the backdrop of Mount Juneau. The contrast of the golden dome against the green mountain is striking.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">500 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk west on 5th Street, then turn right uphill on Calhoun Avenue. Continue climbing.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=58.3014,-134.4111&destination=58.3038,-134.4135&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">The Governor's Mansion</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">10 minutes</span>
+                        <span class="stop-address">716 Calhoun Ave, Juneau, AK 99801</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>A stately colonial-style home built in 1912. This is the people's house of Alaska, sitting impressively on the hillside overlooking the channel. The mansion has hosted presidents and dignitaries throughout its history.</p>
+
+                <p>Look for the Liberty Totem Pole standing prominently in the front yard, a rare sight for a governor's residence. It was carved by Tlingit master carvers and represents the connection between Alaska's Native heritage and modern government.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>You cannot go inside, but the view of the channel from the sidewalk across the street is excellent. This elevated vantage point offers a different perspective on the waterfront you walked along earlier.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">500 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Continue on Calhoun, then descend the stairs and path into the park valley. You are entering the rainforest.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=58.3038,-134.4135&destination=58.3055,-134.4180&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Cope Park & Gold Creek</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Cope Park Access Rd, Juneau, AK</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>This is where the city meets the wilderness. It is a lush, green canyon park centered around Gold Creek, the exact spot where Joe Juneau and Richard Harris first found gold in 1880, sparking the rush that built this city.</p>
+
+                <p>In August, look into the creek for Chum salmon returning to spawn. Their journey from the ocean to this creek is one of nature's great dramas. Also watch for American Dippers, grey birds that remarkably walk underwater along the creek bottom hunting for insects.</p>
+            </div>
+
+            <div class="callout wildlife">
+                <div class="callout-label">Wildlife Spotting</div>
+                <p>August is prime salmon run season. Watch the creek carefully for salmon fighting their way upstream. Their silvery flashes and splashing are unmistakable.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 5</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">1.6 kilometers</span>
+                    <span class="walking-stat">30 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">The active segment. Walk UP Basin Road, a shared dirt and gravel road that winds up the canyon. It is scenic and peaceful, but be aware that black bears are common here. Make noise by talking loudly as you walk.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=58.3055,-134.4180&destination=58.3110,-134.4020&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Last Chance Basin Mining Museum</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">1001 Basin Rd, Juneau, AK 99801</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-mendenhall-glacier.jpg" alt="Historic mining equipment in mountain valley">
+            </div>
+
+            <div class="stop-body">
+                <p>You are now in a historic mining valley surrounded by mountains. The old compressor building, now a museum, is a rustic industrial relic being reclaimed by nature. This was the operational heart of the Alaska-Juneau Gold Mining Company.</p>
+
+                <p>Look for the massive wooden trestle bridge you cross to get here. Waterfalls cascade down the mountainsides, including Ebner Falls. The combination of industrial archaeology and wild nature is striking.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Even if you do not pay to enter the museum (5 dollars cash usually), the area outside offers incredible ghost town vibes and mountain views. This is your turnaround point.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The trestle bridge framed against the waterfalls and green mountains makes for a dramatic photograph. The overcast light common in August is actually perfect for capturing the deep greens.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 6</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">1.6 kilometers</span>
+                    <span class="walking-stat">25 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Head back DOWN Basin Road. Enjoy the easy downhill stroll and different perspective on the rainforest canyon.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=58.3110,-134.4020&destination=58.3005,-134.4105&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">6</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Alaska State Capitol</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">120 4th St, Juneau, AK 99801</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-state-capitol.jpg" alt="Alaska State Capitol building">
+            </div>
+
+            <div class="stop-body">
+                <p>It might be the only state capitol that looks like a generic office building, but it is full of character. Juneau has fought hard to remain the capital despite numerous votes to move it to a more accessible location.</p>
+
+                <p>Look for the marble pillars made from Alaskan marble and the artwork in the lobby depicting Alaska's history and landscapes.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>It is open to the public on weekdays. You can usually just walk into the lobby to dry off from the rain and see the historical displays. A warm respite if the weather turns.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 7</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">300 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk down the hill to South Franklin Street, the historic heart of tourist Juneau.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=58.3005,-134.4105&destination=58.2985,-134.4060&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">7</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Historic South Franklin Street</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">S Franklin St, Juneau, AK</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-red-dog-saloon.jpg" alt="Historic Red Dog Saloon on South Franklin Street">
+            </div>
+
+            <div class="stop-body">
+                <p>The beating heart of tourist Juneau. Victorian-era facades, saloons, and shops line this historic street. This was the rough-and-tumble center of the gold rush town where miners came to spend their earnings.</p>
+
+                <p>Look for the Red Dog Saloon with its swinging doors and sawdust floor. You do not have to eat there, but peek inside to see the Wyatt Earp gun and soak in the frontier atmosphere.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Look up at the mountains straight above you. That is Mount Roberts. You can take the tramway up for spectacular views, though the walk you just completed offered its own mountain experience.</p>
+            </div>
+        </article>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Tracy's King Crab Shack</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">Lunch: 45 minutes</span>
+                        <span class="stop-address">432 S Franklin St</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Right at the end of your tour, this is THE place to eat in Juneau. Yes, it is expensive. Yes, there is usually a line. But the Alaskan King Crab is world-famous for a reason.</p>
+
+                <p>The outdoor picnic table seating overlooking the harbor is part of the experience. Watch floatplanes take off while cracking crab legs.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">What to Order</div>
+                <p>The Combo Number 1: King Crab leg, crab bisque, and crab cakes. Budget 40 to 60 dollars per person. For a more casual option, try Deckhand Dave's fish tacos in the food truck lot at 139 South Franklin Street for 18 to 25 dollars.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have climbed through Alaska's capital from the waterfront to the rainforest and back, following the path of gold seekers and salmon alike. From the Russian heritage church to the ghost town mining valley, from spawning salmon in Gold Creek to King Crab on South Franklin Street, this is Juneau's golden loop. The cruise ships will depart, but you have walked where the prospectors walked and seen what draws people to this wild capital at the edge of the world.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 &middot; For adventurers in liquid sunshine</span>
+        </div>
+    </footer>
+</body>
+</html>
