@@ -277,10 +277,10 @@
         }
 
         .legend-item { display: flex; align-items: center; gap: 0.4em; }
-        .legend-marker { width: 12px; height: 12px; border-radius: 50%; }
+        .legend-marker { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
         .legend-marker.stop { background: var(--accent); }
         .legend-marker.food { background: var(--food-color); }
-        .legend-marker.route { background: var(--walk-color); height: 3px; border-radius: 2px; }
+        .legend-marker.route { background: var(--walk-color); width: 20px; height: 3px; border-radius: 2px; }
 
         .content {
             max-width: var(--content-width);
@@ -403,7 +403,7 @@
         .callout.photo { border-color: var(--photo-color); }
         .callout.food { border-color: var(--food-color); }
 
-        .callout-title {
+        .callout-label {
             font-family: var(--font-mono);
             font-size: 0.72rem;
             font-weight: 600;
@@ -412,9 +412,9 @@
             margin-bottom: var(--space-xs);
         }
 
-        .callout.tip .callout-title { color: var(--walk-color); }
-        .callout.photo .callout-title { color: var(--photo-color); }
-        .callout.food .callout-title { color: var(--food-color); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
 
         .callout p { margin: 0; font-size: 0.95rem; }
 
@@ -560,6 +560,22 @@
             .header, .footer, .audio-player, .directions-link { display: none; }
             .stop { break-inside: avoid; }
         }
+
+        /* Visually hidden but read by TTS/screen readers */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        /* Hide from TTS/screen readers but show visually */
+        .tts-hide { speak: never; }
+        [aria-hidden="true"] { speak: never; }
     </style>
 </head>
 <body>
@@ -668,12 +684,12 @@
             </div>
 
             <div class="callout tip">
-                <p class="callout-title">Insider Tip</p>
+                <div class="callout-label">Insider Tip</div>
                 <p>Skip the paid museum area on a three-hour tour. The free grounds and temple exteriors are magnificent enough, and you'll want that time for the Great Buddha later.</p>
             </div>
 
             <div class="callout photo">
-                <p class="callout-title">Photo Op</p>
+                <div class="callout-label">Photo Op</div>
                 <p>The reflection of the pagoda in Sarusawa Pond, about 200 meters south, is one of Nara's most iconic shots. Best in early morning when the water is still.</p>
             </div>
         </article>
@@ -684,7 +700,7 @@
                 <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
                 <span class="walking-title">Walk to Yoshikien Garden</span>
                 <div class="walking-stats">
-                    <span class="walking-stat">600m</span>
+                    <span class="walking-stat">600 meters</span>
                     <span class="walking-stat">8 min</span>
                 </div>
             </div>
@@ -722,7 +738,7 @@
             </div>
 
             <div class="callout tip">
-                <p class="callout-title">Insider Tip</p>
+                <div class="callout-label">Insider Tip</div>
                 <p>Free admission for foreign tourists! Just show your passport at the entrance. The famous Isuien garden next door charges about 1,200 yen, but Yoshikien is often quieter and just as beautiful.</p>
             </div>
         </article>
@@ -733,7 +749,7 @@
                 <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
                 <span class="walking-title">Walk to Todaiji Temple</span>
                 <div class="walking-stats">
-                    <span class="walking-stat">400m</span>
+                    <span class="walking-stat">400 meters</span>
                     <span class="walking-stat">5 min</span>
                 </div>
             </div>
@@ -771,12 +787,12 @@
             </div>
 
             <div class="callout tip">
-                <p class="callout-title">Insider Tip</p>
+                <div class="callout-label">Insider Tip</div>
                 <p>Look for the wooden pillar near the back with a hole at the bottom. Legend says the hole is the same size as the Buddha's nostril. Crawling through supposedly grants enlightenment. Adults sometimes get stuck, so choose wisely.</p>
             </div>
 
             <div class="callout photo">
-                <p class="callout-title">Photo Op</p>
+                <div class="callout-label">Photo Op</div>
                 <p>The best angle for photographing the Great Buddha is from the right side, not dead center. This captures the depth of the halo and the Buddha's serene expression in profile.</p>
             </div>
         </article>
@@ -787,7 +803,7 @@
                 <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
                 <span class="walking-title">Walk to Kasuga Taisha</span>
                 <div class="walking-stats">
-                    <span class="walking-stat">1.2 km</span>
+                    <span class="walking-stat">1.2 kilometers</span>
                     <span class="walking-stat">20 min</span>
                 </div>
             </div>
@@ -825,12 +841,12 @@
             </div>
 
             <div class="callout tip">
-                <p class="callout-title">Insider Tip</p>
+                <div class="callout-label">Insider Tip</div>
                 <p>Pay the small fee to enter Fujinami-no-ya Hall. It's a darkened room filled with lit bronze lanterns, simulating the magical atmosphere of the biannual lantern festivals. Totally worth it for the atmosphere.</p>
             </div>
 
             <div class="callout photo">
-                <p class="callout-title">Photo Op</p>
+                <div class="callout-label">Photo Op</div>
                 <p>The rows of bronze lanterns hanging under the shrine corridors make for stunning photographs, especially in the soft morning light filtering through.</p>
             </div>
         </article>
@@ -841,7 +857,7 @@
                 <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
                 <span class="walking-title">Walk to Lunch</span>
                 <div class="walking-stats">
-                    <span class="walking-stat">1.5 km</span>
+                    <span class="walking-stat">1.5 kilometers</span>
                     <span class="walking-stat">20 min</span>
                 </div>
             </div>
@@ -879,12 +895,12 @@
             </div>
 
             <div class="callout food">
-                <p class="callout-title">What to Order</p>
+                <div class="callout-label">What to Order</div>
                 <p>The "Yamato" set includes kakinoha-zushi alongside Miwa somen—thin wheat noodles from nearby Miwa, another regional specialty. Together they're about 1,500 to 2,500 yen per person. Excellent value for an authentic Nara meal.</p>
             </div>
 
             <div class="callout tip">
-                <p class="callout-title">Quick Snack Alternative</p>
+                <div class="callout-label">Quick Snack Alternative</div>
                 <p>Short on time? Nakatanidou near the station is famous for high-speed mochi pounding—watch the men pound green tea mochi with mallets at lightning speed, then eat it warm for about 200 yen. Eat it immediately; it's never better than that first moment.</p>
             </div>
         </article>
