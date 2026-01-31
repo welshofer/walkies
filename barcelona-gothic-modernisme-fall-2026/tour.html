@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Stone to Sea — Barcelona, Spain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #E25822;
+            --accent-soft: rgba(226, 88, 34, 0.12);
+            --accent-hover: #C44A1A;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #C9A227;
+            --food-soft: rgba(201, 162, 39, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #F07040;
+                --accent-soft: rgba(240, 112, 64, 0.15);
+                --accent-hover: #FF8C5A;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #D4B83D;
+                --food-soft: rgba(212, 184, 61, 0.2);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .badge-season { background: #FFF3E0; color: #E65100; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px !important; height: 12px !important; min-width: 12px; max-width: 12px; min-height: 12px; max-height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px !important; height: 3px !important; min-height: 3px; max-height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:nth-child(6) { animation-delay: 0.35s; }
+        .stop:nth-child(7) { animation-delay: 0.4s; }
+        .stop:nth-child(8) { animation-delay: 0.45s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout.history { border-color: var(--accent); }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout.history .callout-label { color: var(--accent); }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+        @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Barcelona, Spain</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">6-8 hours</span>
+                <span class="badge badge-distance">5.5 kilometers</span>
+                <span class="badge badge-stops">8 stops</span>
+                <span class="badge badge-season">September</span>
+            </div>
+            <h1 class="hero-title">From Stone to Sea</h1>
+            <p class="hero-city">Barcelona, Spain &middot; Modernisme to Mediterranean</p>
+            <p class="hero-subtitle">A descent from Gaudí's impossible curves through the ancient Roman and Gothic core, ending with tapas and sand between your toes by the Mediterranean Sea.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-barcelona-fall.jpg" alt="Barcelona Gothic Quarter rooftops with Mediterranean Sea in distance and September golden light">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/barcelona-stone-to-sea.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">9:00 AM (beat crowds, hit lunch at Spanish time)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value">Metro Diagonal (L3, L5)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">September weather:</span>
+                    <span class="fact-value">20 to 26 degrees Celsius, can be humid</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Free exteriors. Lunch tapas: 25 to 40 euros.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map from Casa Milà to Barceloneta">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Casa Milà (La Pedrera)</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Passeig de Gràcia, 92</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Antoni Gaudí's last private residence design. This controversial masterpiece looks like a stone lung breathing in the middle of the city. The locals hated it initially, calling it La Pedrera, the Quarry, because it looked like a rough pile of stones. Today it is a UNESCO World Heritage Site.</p>
+
+                <p>Gaudí famously hated straight lines. He designed the building so that if you wanted to change the layout, you could move any partition wall because the weight is supported by pillars, not walls. This was a revolutionary engineering feat for 1910.</p>
+
+                <p>Look for the Soldier chimney pots on the roof, visible from the street, and the wrought-iron balconies that look like tangled seaweed. Each balcony is unique, designed to evoke ocean waves frozen in iron.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Stand on the corner of Carrer de Provença to get the best angle of the undulating stone facade without straining your neck. The rooftop tour is worth it if you pre-booked, but the exterior is spectacular on its own.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">450 meters</span>
+                    <span class="walking-stat">6 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk down Passeig de Gràcia towards the ocean. This is Barcelona's Champs-Élysées. Notice the hexagonal paving stones, originally designed by Gaudí himself.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3952,2.1619&destination=41.3916,2.1649&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Casa Batlló & The Block of Discord</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Passeig de Gràcia, 43</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-casa-batllo.jpg" alt="Casa Batlló facade with skeletal balconies, colorful mosaic tiles, and dragon roof">
+            </div>
+
+            <div class="stop-body">
+                <p>A psychedelic remodeling of an existing house that represents the legend of Saint George, patron saint of Catalonia, slaying the dragon. The roof is the dragon's back with iridescent scales. The turret is Saint George's lance. The balconies look like skulls, the dragon's victims.</p>
+
+                <p>This building sits on the Illa de la Discòrdia, the Block of Discord, so named because three famous architects built wildly different styles right next to each other: Gaudí, Cadafalch, and Domènech i Montaner.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>Look closely at the trencadís mosaic on the facade. It is made of recycled glass and ceramic circles that change color depending on the angle of the sun. Morning light creates a completely different palette than afternoon.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">850 meters</span>
+                    <span class="walking-stat">12 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Continue down Passeig de Gràcia until it hits the massive Plaça de Catalunya. Cross the square and take the bustling Portal de l'Àngel pedestrian street into the Gothic Quarter.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3916,2.1649&destination=41.3840,2.1762&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Barcelona Cathedral</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">Pla de la Seu, s/n</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-gothic-quarter.jpg" alt="Barcelona Gothic Quarter narrow medieval street with stone archways and morning shadows">
+            </div>
+
+            <div class="stop-body">
+                <p>The heart of the Gothic Quarter. Unlike Gaudí's organic curves, this is moody, imposing, and classic Gothic. The neo-Gothic facade was actually added in the 19th century, but the interior dates to the 14th century. Look for the gargoyles. They are not just monsters. Find the unicorn and the elephant.</p>
+
+                <p>Enter the cloister through the side entrance to find a pond with exactly 13 white geese. They represent the age of Saint Eulalia, co-patron saint of the city, when she was martyred by the Romans. The geese have lived here for over 500 years.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Dress Code</div>
+                <p>If you have bare shoulders or short shorts, they might not let you in. Have a scarf ready. The cathedral is free to visit in the morning, but there is a small donation requested in the afternoon.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">200 meters</span>
+                    <span class="walking-stat">3 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk behind the cathedral down Carrer del Paradís. Look for a small doorway at number 10. It is easy to miss.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3840,2.1762&destination=41.3833,2.1772&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Temple of Augustus</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Carrer del Paradís, 10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>A hidden gem often missed by tourists. Inside a medieval courtyard, four massive 2,000-year-old Roman columns tower over you. The sheer scale of these Corinthian columns squeezed into a tiny apartment block courtyard is surreal.</p>
+
+                <p>This was the Mons Taber, the highest point of the Roman settlement of Barcino. You are standing at the physical and spiritual center of ancient Barcelona. The temple once dominated the skyline.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>It is free to enter. It is quiet, cool, and a perfect respite from the heat. Most tourists walk right past the unmarked door. Look for the plaque at Carrer del Paradís 10.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 5</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">150 meters</span>
+                    <span class="walking-stat">2 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit and head towards Plaça del Rei via Carrer de la Pietat. The medieval square opens up before you.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3833,2.1772&destination=41.3841,2.1775&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Plaça del Rei</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Plaça del Rei</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>The most perfectly preserved medieval square in the city. You are surrounded by the Royal Palace on three sides. This is where King Ferdinand and Queen Isabella famously welcomed Christopher Columbus back from his first voyage to the Americas.</p>
+
+                <p>Look for the stillness. It is remarkably quiet compared to the rest of the city. The structure on the corner is the Watchtower of King Martin. It was built to be the tallest structure in the city at the time to watch for pirate ships.</p>
+            </div>
+
+            <div class="callout history">
+                <div class="callout-label">History Note</div>
+                <p>The underground museum beneath this square (MUHBA) contains excavated Roman streets, houses, and workshops. If you have time, it is one of the best Roman archaeology sites in Europe.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 6</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">450 meters</span>
+                    <span class="walking-stat">6 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Cross the busy Via Laietana, the street that sliced the old city in half in 1908. Enter the trendy El Born district. Head towards Carrer de Montcada.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3841,2.1775&destination=41.3837,2.1819&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">6</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Santa Maria del Mar</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Plaça de Santa Maria, 1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-santa-maria-del-mar.jpg" alt="Santa Maria del Mar interior with soaring Gothic columns and stained glass windows">
+            </div>
+
+            <div class="stop-body">
+                <p>The Cathedral of the Sea. While the main cathedral was for royalty, this church was built by the people. Local dockworkers called bastaixos carried the stones on their backs from Montjuïc quarry. It took just 55 years to complete, remarkably fast for the 14th century.</p>
+
+                <p>The interior spaciousness is breathtaking. There is almost no decoration, just soaring stone columns and light. The acoustics are perfect. If you hear music playing, stop and listen.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Hidden Detail</div>
+                <p>Look at the stained glass windows. One modern pane features the FC Barcelona crest, Barça, added during a restoration after a fire. Football is religion here.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">Lunch Break</div>
+                <p>Bar del Pla at Carrer de Montcada 2 serves incredible tapas. Try the oxtail with foie gras and squid ink croquettes. Or for a standing, chaotic experience, El Xampanyet at number 22 for house cava and fresh anchovies.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 7</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">200 meters</span>
+                    <span class="walking-stat">3 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Continue through El Born towards the old market hall. The iron structure will come into view.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3837,2.1819&destination=41.3857,2.1837&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">7</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">El Born Centre de Cultura i Memòria</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">Plaça Comercial, 12</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>It looks like a 19th-century market hall from the outside, but inside, the floor is open to reveal the excavated ruins of the city from 1714. You are looking at the exact moment the city was destroyed after the Siege of Barcelona.</p>
+
+                <p>Philip V destroyed this neighborhood to build a citadel to control the rebellious Catalans. The ruins were rediscovered recently during renovations. The layout of houses, streets, and workshops is eerily visible below the walkways.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Entrance to the building and walkways is free. You only pay to go down into the ruins. The view from above is usually sufficient and quite moving.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">Sweet Break</div>
+                <p>Hofmann Pastisseria at Carrer dels Flassaders 44 has the world-famous Mascarpone Croissant. Grab one before heading to the beach. You will need the energy.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 8</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">1 kilometer</span>
+                    <span class="walking-stat">15 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk down Passeig del Born, past the old train station Estació de França, and head towards the marina. Smell the salt air as you enter the fisherman's district, Barceloneta.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=41.3857,2.1837&destination=41.3789,2.1896&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">8</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Barceloneta & La Cova Fumada</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">End of tour</span>
+                        <span class="stop-address">Carrer del Baluard, 56</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-barceloneta.jpg" alt="Barceloneta Beach with Mediterranean Sea, palm trees, and September golden afternoon light">
+            </div>
+
+            <div class="stop-body">
+                <p>The old fishermen's quarter. Narrow grid streets, laundry hanging from balconies, loud local energy. This is working-class Barcelona, authentic and unpretentious. The beach is two minutes away.</p>
+
+                <p>Your final destination is La Cova Fumada, a tiny unmarked bar that invented the Bomba, a meat-filled potato ball with spicy sauce. During the Spanish Civil War, a neighbor tasted it and yelled "It's a bomb!", and the name stuck. The bar has no sign. Look for the crowd.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">The Bomba</div>
+                <p>Order the bomba, obviously. Also get the fried artichokes and whatever fish they have that day. Cash only. No reservations. If the line is too long, walk to the beach instead and dip your feet in the Mediterranean. You have earned it.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have descended from the impossible curves of Gaudí through 2,000 years of history, from Roman columns to Gothic spires to modernist madness. You crossed the old city where Catalans still resist, still create, still eat well. And now you are at the sea, where Barcelona began and where it always returns. September in Barcelona is magic: La Mercè festival brings fire runs and giants to the streets if you visit around September 24th. The metro awaits at Barceloneta station, but perhaps one more beer and the sunset first.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 &middot; For adventurers who love history and tapas</span>
+        </div>
+    </footer>
+</body>
+</html>
