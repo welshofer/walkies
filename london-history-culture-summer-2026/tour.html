@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The River of Time - London Walking Tour</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #1A3A5C;
+            --accent-soft: rgba(26, 58, 92, 0.12);
+            --accent-hover: #0D2640;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 720px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #5A8FC4;
+                --accent-soft: rgba(90, 143, 196, 0.15);
+                --accent-hover: #7AAFDC;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+            }
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-md);
+        }
+
+        .tour-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .back-link {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            margin-bottom: var(--space-md);
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        .tour-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 var(--space-xs);
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        .tour-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .tour-meta {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.4em 0.8em;
+            border-radius: 3px;
+        }
+
+        .badge-duration {
+            background: var(--accent-soft);
+            color: var(--accent);
+        }
+
+        .badge-distance {
+            background: var(--bg-alt);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .badge-stops {
+            background: rgba(151, 196, 184, 0.2);
+            color: #2E7D32;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .badge-stops {
+                background: rgba(151, 196, 184, 0.15);
+                color: #81C784;
+            }
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: var(--space-lg);
+        }
+
+        .audio-section {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .audio-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .audio-player {
+            width: 100%;
+        }
+
+        .map-section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .tour-map {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .quick-facts {
+            background: var(--accent-soft);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+
+        .quick-facts h3 {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin: 0 0 var(--space-sm);
+        }
+
+        .quick-facts ul {
+            margin: 0;
+            padding-left: 1.2em;
+        }
+
+        .quick-facts li {
+            margin-bottom: 0.4em;
+            color: var(--text);
+        }
+
+        .stop {
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stop:last-of-type {
+            border-bottom: none;
+        }
+
+        .stop-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .stop-number {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            background: var(--accent);
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .stop-title-group {
+            flex: 1;
+        }
+
+        .stop-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0 0 0.2em;
+            line-height: 1.2;
+        }
+
+        .stop-time {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .stop-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: var(--space-md);
+        }
+
+        .stop-content p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .stop-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .insider-tip {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+            font-size: 0.95rem;
+        }
+
+        .insider-tip strong {
+            color: var(--accent);
+        }
+
+        .walk-segment {
+            background: linear-gradient(135deg, rgba(151, 196, 184, 0.1) 0%, rgba(151, 196, 184, 0.05) 100%);
+            border: 1px solid rgba(151, 196, 184, 0.3);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .walk-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .walk-icon {
+            font-size: 1.2rem;
+        }
+
+        .walk-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #2E7D32;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .walk-title {
+                color: #81C784;
+            }
+        }
+
+        .walk-meta {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .walk-badge {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 0.3em 0.6em;
+            background: rgba(151, 196, 184, 0.2);
+            color: #2E7D32;
+            border-radius: 2px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .walk-badge {
+                background: rgba(151, 196, 184, 0.15);
+                color: #81C784;
+            }
+        }
+
+        .walk-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-sm);
+        }
+
+        .directions-link {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+
+        .directions-link:hover {
+            text-decoration: underline;
+        }
+
+        .food-section {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .food-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0 0 var(--space-sm);
+        }
+
+        .food-item {
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .food-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .food-name {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .food-type {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .tour-footer {
+            margin-top: var(--space-2xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .related-tours {
+            margin-top: var(--space-lg);
+        }
+
+        .related-tours h3 {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .tour-link {
+            display: inline-block;
+            padding: var(--space-sm) var(--space-md);
+            background: var(--accent-soft);
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .tour-link:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            html {
+                font-size: 16px;
+            }
+
+            .tour-title {
+                font-size: 2rem;
+            }
+
+            .stop-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tour-meta {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="tour-header">
+            <a href="../index.html" class="back-link">
+                <span>&larr;</span> All Tours
+            </a>
+            <h1 class="tour-title">The River of Time</h1>
+            <p class="tour-subtitle">Medieval to Modern London</p>
+            <div class="tour-meta">
+                <span class="meta-badge badge-duration">5 hours</span>
+                <span class="meta-badge badge-distance">5 km</span>
+                <span class="meta-badge badge-stops">10 stops</span>
+            </div>
+        </header>
+
+        <img src="images/hero-london-summer.jpg" alt="Tower Bridge and Thames River in summer" class="hero-image">
+
+        <section class="audio-section">
+            <p class="audio-label">Audio Guide</p>
+            <audio controls class="audio-player">
+                <source src="audio/london-river-of-time.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <section class="map-section">
+            <p class="section-label">Tour Route</p>
+            <img src="images/tour-overview-map.png" alt="London walking tour route map" class="tour-map">
+        </section>
+
+        <section class="quick-facts">
+            <h3>Before You Go</h3>
+            <ul>
+                <li><strong>Start:</strong> Tower Hill Station (Circle/District Lines)</li>
+                <li><strong>End:</strong> St. Paul's Cathedral (Central Line)</li>
+                <li><strong>Best time:</strong> 9:30 AM Wednesday-Saturday for Borough Market</li>
+                <li><strong>Terrain:</strong> Mostly flat, some cobblestones in Shad Thames</li>
+                <li><strong>Restrooms:</strong> Tower of London area, Borough Market, Tate Modern</li>
+                <li><strong>Summer tip:</strong> Can reach 30C - the route has good shelter if rain passes through</li>
+            </ul>
+        </section>
+
+        <article class="stop" id="stop-1">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">St. Dunstan in the East</h2>
+                    <span class="stop-time">20 minutes</span>
+                </div>
+            </div>
+            <img src="images/stop-01-st-dunstan.jpg" alt="St Dunstan in the East garden ruins" class="stop-image">
+            <div class="stop-content">
+                <p>A secret garden hidden inside the shell of a bombed-out medieval church. This is one of the most atmospheric and peaceful spots in London, and most tourists walk right past it.</p>
+                <p>Look for the trees growing through the arched windows of the Wren-designed tower. The contrast between the grey stone ruins and the lush green vines is stunning.</p>
+                <p>Originally built around 1100, this church was severely damaged in the Great Fire of 1666, patched up by Sir Christopher Wren, and finally destroyed by the Blitz in 1941. Instead of rebuilding, the City turned it into a public garden in 1971.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> It opens at 8 AM. If you start your tour early, you might have this enchanting space entirely to yourself for photos.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 2</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">400m</span>
+                <span class="walk-badge">5 min</span>
+            </div>
+            <p class="walk-description">Exit the garden and head south towards the river. Turn left onto Lower Thames Street, passing the ancient Roman Wall fragments near the station exit, until the massive fortress walls dominate your view.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5096,-0.0827&destination=51.5081,-0.0759&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-2">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Tower of London</h2>
+                    <span class="stop-time">30 minutes (perimeter walk)</span>
+                </div>
+            </div>
+            <img src="images/stop-02-tower-london.jpg" alt="Tower of London exterior walls" class="stop-image">
+            <div class="stop-content">
+                <p>A UNESCO World Heritage site and the most secure castle in the land for nearly 1,000 years. It has been a palace, fortress, prison, and zoo.</p>
+                <p>Look for Traitors' Gate from the embankment side, where prisoners like Anne Boleyn entered by water. Watch for the ravens on the lawn inside the walls.</p>
+                <p>Built by William the Conqueror in the 1070s to oppress the rebellious Londoners. Legend says that if the six ravens ever leave the Tower, the Kingdom will fall. To be safe, there are usually seven (one spare), and their wings are clipped.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> You don't need a ticket to see the best views. Walk the riverside path for a perfect view of the White Tower and the medieval walls without the crowds inside.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 3</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">200m</span>
+                <span class="walk-badge">5 min</span>
+            </div>
+            <p class="walk-description">Continue east along the riverfront. You cannot miss the massive bridge structure ahead. Walk up the stairs to the bridge deck level.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5081,-0.0759&destination=51.5055,-0.0754&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-3">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Tower Bridge</h2>
+                    <span class="stop-time">20 minutes (crossing)</span>
+                </div>
+            </div>
+            <div class="stop-content">
+                <p>The world's most famous bascule bridge. It defines the London skyline and is a Victorian engineering marvel, opened in 1894.</p>
+                <p>Look for the bascules (see-saw pivots) at the base of the towers. Look through the gaps in the pedestrian railing to see the river churning below.</p>
+                <p>In 1952, a bus driver had to jump his double-decker bus across a 3-foot gap when the bridge started opening while he was still on it. He made it.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> Check the Bridge Lift Times online before you go. Seeing the bridge open for a large ship is a lucky bonus.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 4</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">500m</span>
+                <span class="walk-badge">10 min</span>
+            </div>
+            <p class="walk-description">Once across the bridge, descend the stairs to the right (Shad Thames side) and walk under the bridge arch. You are entering Butler's Wharf.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5055,-0.0754&destination=51.5037,-0.0732&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-4">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Shad Thames / Butler's Wharf</h2>
+                    <span class="stop-time">15 minutes</span>
+                </div>
+            </div>
+            <div class="stop-content">
+                <p>This historic cobblestone street looks exactly like 19th-century industrial London. It was the Larder of London where tea, coffee, and spices were stored.</p>
+                <p>Look for the wrought-iron overhead gantries (bridges) connecting the warehouses. These were used to roll barrels of goods between buildings without going down to the muddy street.</p>
+                <p>In the Victorian era, this area smelled of spices from the East Indies. This street is a favorite film location - you might recognize it from Bridget Jones's Diary or Cruella.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> The acoustics here are incredible; your footsteps will echo off the brick canyons.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 5</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">1.2 km</span>
+                <span class="walk-badge">15 min</span>
+            </div>
+            <p class="walk-description">Walk west along the Thames path, passing HMS Belfast (the warship). Continue past Hay's Galleria - look at the kinetic sculpture "The Navigators" - until you see the railway bridges and the entrance to the market.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5037,-0.0732&destination=51.5055,-0.0900&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-5">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Borough Market</h2>
+                    <span class="stop-time">60 minutes (lunch stop)</span>
+                </div>
+            </div>
+            <img src="images/stop-05-borough-market.jpg" alt="Borough Market food stalls" class="stop-image">
+            <div class="stop-content">
+                <p>London's oldest and most renowned food market, dating back to the 12th century. It is a sensory explosion of smells, sights, and tastes.</p>
+                <p>Look for the Market Bell and the Art Deco green glass structure. It sits right next to Southwark Cathedral - monks used to trade grain here in the Middle Ages.</p>
+                <p>Historically, this market was outside the City jurisdiction, making it a place for chaotic trade and lawlessness.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> Don't commit to the first thing you see. Do a "tasting lap" first. Most vendors offer free samples of cheese and charcuterie.
+                </div>
+            </div>
+        </article>
+
+        <section class="food-section">
+            <h3>Where to Eat at Borough Market</h3>
+            <div class="food-item">
+                <p><span class="food-name">The Ginger Pig</span> <span class="food-type">- Market Stall</span></p>
+                <p>Famous for the best sausage rolls in London. A heavy, savory snack perfect for active walkers.</p>
+            </div>
+            <div class="food-item">
+                <p><span class="food-name">Kappacasein Dairy</span> <span class="food-type">- Market Stall</span></p>
+                <p>Order the Raclette: bubbling Swiss cheese scraped over new potatoes and gherkins.</p>
+            </div>
+            <div class="food-item">
+                <p><span class="food-name">Padella</span> <span class="food-type">- Restaurant</span></p>
+                <p>Incredible fresh pasta. Note: The queue is often long. If the line is short, grab a counter seat.</p>
+            </div>
+            <div class="food-item">
+                <p><span class="food-name">Monmouth Coffee</span> <span class="food-type">- Coffee Shop</span></p>
+                <p>The gold standard for London coffee. Grab a flat white to go.</p>
+            </div>
+        </section>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 6</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">200m</span>
+                <span class="walk-badge">3 min</span>
+            </div>
+            <p class="walk-description">Exit the market onto Borough High Street. Look for a narrow alleyway entrance leading to a courtyard.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5055,-0.0900&destination=51.5043,-0.0903&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-6">
+            <div class="stop-header">
+                <span class="stop-number">6</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">The George Inn</h2>
+                    <span class="stop-time">30 minutes (drink stop)</span>
+                </div>
+            </div>
+            <div class="stop-content">
+                <p>The last remaining galleried coaching inn in London. It is owned by the National Trust and looks like stepping back into the 1600s.</p>
+                <p>Look for the wooden galleries (balconies) overlooking the courtyard. This was the bus terminal of the 1600s for coaches heading south.</p>
+                <p>Charles Dickens was a regular here. He mentions it in Little Dorrit. His life insurance policy was famously found behind the bar after he died, though this might be a tall tale.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> Even if you don't drink, step into the Parliament Bar to see the ancient fireplaces and uneven floors.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 7</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">600m</span>
+                <span class="walk-badge">8 min</span>
+            </div>
+            <p class="walk-description">Walk back toward the river, past the Golden Hinde (a full-scale replica of Sir Francis Drake's galleon - worth a quick photo). Follow Clink Street (past the old prison) to the riverside.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5043,-0.0903&destination=51.5081,-0.0972&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-7">
+            <div class="stop-header">
+                <span class="stop-number">7</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Shakespeare's Globe</h2>
+                    <span class="stop-time">15 minutes</span>
+                </div>
+            </div>
+            <img src="images/stop-07-globe.jpg" alt="Shakespeare's Globe Theatre" class="stop-image">
+            <div class="stop-content">
+                <p>A faithful reconstruction of the open-air playhouse where Shakespeare worked. Look for the thatched roof (the only one allowed in Central London since the Great Fire) and the oak timber frame.</p>
+                <p>The original stood a few hundred feet away until it burned down in 1613 during a performance of Henry VIII when a cannon misfired.</p>
+                <p>American actor Sam Wanamaker spent decades fighting to get this built when he was shocked to find only a plaque marking the original site in the 1950s.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> You can see the groundlings standing in the yard through the iron gates if a rehearsal or tour is happening.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 8</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">100m</span>
+                <span class="walk-badge">2 min</span>
+            </div>
+            <p class="walk-description">Right next door is the massive brick power station turned gallery.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5081,-0.0972&destination=51.5076,-0.0994&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-8">
+            <div class="stop-header">
+                <span class="stop-number">8</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Tate Modern</h2>
+                    <span class="stop-time">30 minutes</span>
+                </div>
+            </div>
+            <div class="stop-content">
+                <p>The world's most popular modern art gallery, housed in the former Bankside Power Station. Converted by Herzog & de Meuron in 2000, it revitalized the entire South Bank.</p>
+                <p>Look for the Turbine Hall. It is a cavernous, cathedral-like industrial space that hosts massive, changing art installations.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> Head to the viewing terrace on Level 10 of the Blavatnik Building (the new extension) for a panoramic 360-degree view of London. It's often less crowded than the Shard and usually free.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 9</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">50m</span>
+                <span class="walk-badge">1 min</span>
+            </div>
+            <p class="walk-description">Exit the Tate on the river side. The metal bridge is directly in front of you.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5076,-0.0994&destination=51.5102,-0.0984&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-9">
+            <div class="stop-header">
+                <span class="stop-number">9</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">Millennium Bridge</h2>
+                    <span class="stop-time">15 minutes (crossing)</span>
+                </div>
+            </div>
+            <div class="stop-content">
+                <p>The Wobbly Bridge (it doesn't wobble anymore). A pedestrian-only Blade of Light connecting the spiritual (St Paul's) with the cultural (Tate).</p>
+                <p>Look for the tiny chewing gum art on the bridge deck. Artist Ben Wilson paints miniature scenes on discarded gum trodden into the bridge.</p>
+                <p>Opened in 2000, it closed 2 days later due to swaying. Reopened 2 years later after engineering fixes.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> This is the best photo op for St. Paul's Cathedral. Frame the dome perfectly between the bridge supports.
+                </div>
+            </div>
+        </article>
+
+        <div class="walk-segment">
+            <div class="walk-header">
+                <span class="walk-icon">🚶</span>
+                <span class="walk-title">Walk to Stop 10</span>
+            </div>
+            <div class="walk-meta">
+                <span class="walk-badge">400m</span>
+                <span class="walk-badge">5 min</span>
+            </div>
+            <p class="walk-description">Walk straight off the bridge, up Peter's Hill towards the massive dome.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=51.5102,-0.0984&destination=51.5138,-0.0984&travelmode=walking" class="directions-link" target="_blank">
+                Open in Google Maps &rarr;
+            </a>
+        </div>
+
+        <article class="stop" id="stop-10">
+            <div class="stop-header">
+                <span class="stop-number">10</span>
+                <div class="stop-title-group">
+                    <h2 class="stop-name">St. Paul's Cathedral</h2>
+                    <span class="stop-time">End of tour</span>
+                </div>
+            </div>
+            <img src="images/stop-10-st-pauls.jpg" alt="St Paul's Cathedral dome" class="stop-image">
+            <div class="stop-content">
+                <p>Sir Christopher Wren's masterpiece and the spiritual heart of the nation. Rebuilt after the Great Fire of 1666, it survived the Blitz while the area around it burned.</p>
+                <p>Look for the pineapples on the top of the western towers - symbols of hospitality.</p>
+                <p>This is where Prince Charles married Lady Diana, and where Winston Churchill had his funeral.</p>
+                <div class="insider-tip">
+                    <strong>Insider tip:</strong> If you still have energy, the One New Change shopping center next door has a public roof terrace (free) with a stunning eye-level view of the Dome.
+                </div>
+            </div>
+        </article>
+
+        <footer class="tour-footer">
+            <div class="related-tours">
+                <h3>Continue Exploring</h3>
+                <a href="../munich-history-culture-spring-2026/tour.html" class="tour-link">Munich: Royal Munich and The River Wave</a>
+            </div>
+            <p class="footer-text">Generated with Claude Code &middot; Audio powered by Gemini TTS</p>
+        </footer>
+    </div>
+</body>
+</html>
