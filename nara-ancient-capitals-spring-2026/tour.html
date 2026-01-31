@@ -277,10 +277,27 @@
         }
 
         .legend-item { display: flex; align-items: center; gap: 0.4em; }
-        .legend-marker { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-        .legend-marker.stop { background: var(--accent); }
+        .legend-marker {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 12px !important;
+            height: 12px !important;
+            min-width: 12px;
+            max-width: 12px;
+            min-height: 12px;
+            max-height: 12px;
+            border-radius: 50%;
+        }
+        .legend-marker.stop { background: #EA4335; } /* Google Maps red */
         .legend-marker.food { background: var(--food-color); }
-        .legend-marker.route { background: var(--walk-color); width: 20px; height: 3px; border-radius: 2px; }
+        .legend-marker.route {
+            background: #4A6F5A; /* Route line color from map */
+            width: 20px !important;
+            height: 3px !important;
+            min-height: 3px;
+            max-height: 3px;
+            border-radius: 2px;
+        }
 
         .content {
             max-width: var(--content-width);
