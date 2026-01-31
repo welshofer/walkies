@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origins to Elegance — Paris, France</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #4A5568;
+            --accent-soft: rgba(74, 85, 104, 0.12);
+            --accent-hover: #2D3748;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #C9A227;
+            --food-soft: rgba(201, 162, 39, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #718096;
+                --accent-soft: rgba(113, 128, 150, 0.15);
+                --accent-hover: #A0AEC0;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #D4B83D;
+                --food-soft: rgba(212, 184, 61, 0.2);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .badge-season { background: #FFF3E0; color: #E65100; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px !important; height: 12px !important; min-width: 12px; max-width: 12px; min-height: 12px; max-height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px !important; height: 3px !important; min-height: 3px; max-height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:nth-child(6) { animation-delay: 0.35s; }
+        .stop:nth-child(7) { animation-delay: 0.4s; }
+        .stop:nth-child(8) { animation-delay: 0.45s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout.history { border-color: var(--accent); }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout.history .callout-label { color: var(--accent); }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+        @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Paris, France</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">5 hours</span>
+                <span class="badge badge-distance">6.5 kilometers</span>
+                <span class="badge badge-stops">8 stops</span>
+                <span class="badge badge-season">Summer</span>
+            </div>
+            <h1 class="hero-title">Origins to Elegance</h1>
+            <p class="hero-city">Paris, France &middot; A Tale of Two Banks</p>
+            <p class="hero-subtitle">From the medieval heart of the Seine islands through the intellectual Left Bank to the grandeur of royal palaces. Walk where revolutions began, where writers found their muse, and where France itself was born.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-paris-summer.jpg" alt="Paris rooftops and the Seine at golden hour with Notre-Dame in the distance">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/paris-origins-elegance.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">9:00 AM (beat crowds) or 3:00 PM (golden hour finish)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value">Metro Pont Marie (Line 7)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Summer weather:</span>
+                    <span class="fact-value">20 to 30 degrees Celsius, carry water</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Free outdoor walking. Lunch 35 to 60 euros.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map from Île Saint-Louis to Palais Royal">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Île Saint-Louis</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Quai de Bourbon, 75004 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-01-ile-saint-louis.jpg" alt="17th-century mansions along the quay of Île Saint-Louis with morning light reflecting on the Seine">
+            </div>
+
+            <div class="stop-body">
+                <p>Unlike the rest of Paris, this island has remained largely unchanged since the 17th century. It is an architectural time capsule of French nobility. Where the rest of Paris sprawled and modernized, Île Saint-Louis preserved its original character through sheer stubbornness and good fortune.</p>
+
+                <p>This island was originally a cow pasture until the 1600s when it was developed as a unified real estate project for the wealthy. The result is a rare coherence in Parisian architecture: every building speaks the same elegant dialect of Louis XIII style.</p>
+
+                <p>Look for the mascarons, the ornate stone faces carved into Pont Marie. These grotesque decorations were believed to ward off evil spirits. Notice the elegant hôtels particuliers, private mansions, along the quay. Each doorway tells a story of old money and older taste.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Walk down the stone stairs to the riverbank, the berges, for a quiet waterline view of the city away from traffic. In summer, locals picnic here with wine and cheese. This is the real Paris.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">Sweet Break</div>
+                <p>Berthillon at 31 Rue Saint-Louis en l'Île serves what many consider the best ice cream in Paris. Try the fraise des bois, wild strawberry, or caramel au beurre salé, salted caramel. Cash only.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">600 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Cross Pont Saint-Louis, the pedestrian bridge. Notice the street performers who frequent this spot. Walk straight ahead toward the massive cathedral.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8525,2.3565&destination=48.8529,2.3499&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Notre-Dame de Paris</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">6 Parvis Notre-Dame, 75004 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-02-notre-dame.jpg" alt="Notre-Dame cathedral with restored spire against a summer blue sky, flying buttresses visible from Square Jean XXIII">
+            </div>
+
+            <div class="stop-body">
+                <p>The literal and symbolic center of France. Point Zéro, the bronze star embedded in the cobblestones of the plaza, marks the spot from which all distances in France are measured. Step on it. Legend says you will return to Paris.</p>
+
+                <p>Built over nearly 200 years from 1163 to 1345, Notre-Dame survived revolutions and wars before the devastating 2019 fire. Following its reopening in late 2024, seeing the restored spire and cleaned limestone is a moving experience. The cathedral glows now in ways it has not for centuries.</p>
+
+                <p>Victor Hugo wrote The Hunchback of Notre-Dame specifically to shame the city into restoring the then-decaying cathedral. His novel worked. The 19th-century restoration saved the building, and the 21st-century restoration has renewed it once more.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The best photo angle is not from the front. Walk to Square Jean XXIII behind the cathedral to see the flying buttresses in their full glory. Morning light is particularly beautiful here.</p>
+            </div>
+
+            <div class="callout history">
+                <div class="callout-label">History Note</div>
+                <p>Napoleon crowned himself Emperor here in 1804, snatching the crown from the Pope's hands. The cathedral has witnessed every major moment in French history.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">400 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Cross Pont au Double to the Left Bank. Turn right on Quai de Montebello, then left into the small park Square René Viviani.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8529,2.3499&destination=48.8525,2.3471&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Shakespeare and Company</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">37 Rue de la Bûcherie, 75005 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>The most famous English-language bookstore in the world. This cramped, crooked building was a haven for the Lost Generation writers: Hemingway, Fitzgerald, Stein, Joyce. Their ghosts still haunt the narrow aisles and creaking floors.</p>
+
+                <p>Look for the wishing well in the floor and the tumbleweeds, the sleeping cots tucked among books where aspiring writers still sleep for free in exchange for working in the shop and writing. Founder George Whitman called it a socialist utopia masquerading as a bookstore.</p>
+
+                <p>The original shop was closed by Nazis in 1941 when the owner refused to sell her last copy of Finnegans Wake to a German officer. This second iteration opened in 1951 and was renamed to honor the original in 1964.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Do not queue to get inside if the line is long. The café next door offers the same atmospheric experience with a direct view of Notre-Dame and excellent coffee. The books can wait.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">1.2 kilometers</span>
+                    <span class="walking-stat">20 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk up Rue Saint-Jacques, one of the oldest streets in Paris following the Roman road. Turn right on Rue Soufflot. You are entering the Latin Quarter, named for the language once spoken by students here.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8525,2.3471&destination=48.8462,2.3371&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Jardin du Luxembourg</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">40 minutes</span>
+                        <span class="stop-address">Rue de Médicis, 75006 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-04-luxembourg.jpg" alt="The Medici Fountain in Jardin du Luxembourg, dappled summer sunlight through chestnut trees">
+            </div>
+
+            <div class="stop-body">
+                <p>The quintessential Parisian park. This is where locals go to read, play chess, and sail toy boats on the octagonal pond. Created in 1612 by Marie de Medici, widow of Henry IV, who wanted to recreate the Pitti Palace gardens of her native Florence.</p>
+
+                <p>The Medici Fountain is a romantic, shaded grotto that is one of the coolest spots in Paris on a hot day. Find a green metal chair, the iconic Luxembourg seats, and claim your spot. This is where Parisians come to escape the summer heat.</p>
+
+                <p>The French Senate meets in the Luxembourg Palace at the north end. The garden is technically their backyard, which they graciously share with the public. Notice how the formal French garden style gives way to English garden informality in the southern section.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Hidden Gem</div>
+                <p>Look for the miniature Statue of Liberty on the west side of the park. It is a hidden sibling to the one in New York, one of several models Bartholdi created before the final version.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The Medici Fountain frames perfectly for photos. Early morning offers the best light and fewest crowds. The goldfish in the fountain add unexpected color.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 5</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">900 meters</span>
+                    <span class="walking-stat">15 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit via Rue Bonaparte and head north toward the river. You are now in the chic Saint-Germain-des-Prés neighborhood. Notice the art galleries and antique shops.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8462,2.3371&destination=48.8538,2.3333&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Saint-Germain-des-Prés</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">6 Place Saint-Germain des Prés, 75006 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>The birthplace of Existentialism. Sartre, de Beauvoir, and Camus wrote their masterpieces at the café tables of Les Deux Magots and Café de Flore. The intellectual heart of 20th-century Paris still beats here, though now it shares space with luxury boutiques.</p>
+
+                <p>The bell tower of the church is the oldest in Paris, dating back to 990 AD. The name means of the fields because this was once a powerful abbey outside the city walls, surrounded by meadows. The Revolution destroyed most of the abbey, but the church survived.</p>
+
+                <p>During the war, the cafés here were some of the few places with heating. Writers spent all day nursing a single coffee, creating the café culture that defines French intellectual life.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>While Les Deux Magots is famous and expensive, the church interior is often overlooked and free. The painted pillars are stunningly colorful, unlike most grey Gothic churches. Step inside for five minutes of cool, quiet reflection.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">Lunch Option</div>
+                <p>Le Comptoir du Relais at 9 Carrefour de l'Odéon is a bistronomy icon by Chef Yves Camdeborde. No reservations for lunch, arrive by 11:45 AM. Order the award-winning oeufs mayonnaise and braised beef cheek.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 6</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">700 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Continue north on Rue Bonaparte until you hit the Seine. The river will open up before you.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8538,2.3333&destination=48.8583,2.3375&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">6</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Pont des Arts</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Pont des Arts, 75006 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-06-pont-des-arts.jpg" alt="Pont des Arts pedestrian bridge at golden hour with the Louvre visible and people strolling">
+            </div>
+
+            <div class="stop-body">
+                <p>A pedestrian-only wooden bridge offering the single most romantic view in Paris. Île de la Cité stretches to your left, the Louvre rises to your right. Built by Napoleon in 1804 as the first metal bridge in Paris, it was revolutionary in its time.</p>
+
+                <p>The love locks that once weighed down this bridge have been removed to save its structure. The transparent railings have restored the view that artists have painted for two centuries. Monet, Renoir, and countless others captured this exact scene.</p>
+
+                <p>Look downstream to see the tip of the Île de la Cité. It looks like the prow of a ship, which explains the Paris motto: Fluctuat nec mergitur. Tossed but not sunk.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>Sunset apéro on Pont des Arts is a Parisian tradition. Locals bring wine and cheese. If you are here at golden hour, linger. The light on the Louvre facade is unforgettable.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 7</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">300 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Cross the bridge and walk straight through the archway into the square courtyard. You are entering the Louvre complex.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8583,2.3375&destination=48.8603,2.3378&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">7</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Cour Carrée du Louvre</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 minutes</span>
+                        <span class="stop-address">Cour Carrée, Musée du Louvre, 75001 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Before it was a museum, the Louvre was the royal palace. This courtyard shows the transition from medieval fortress to Renaissance palace. You can still see the outline of the original medieval dungeon keep paved into the ground in the center.</p>
+
+                <p>Look for the monograms on the building facades. H for Henry, K for Katherine. Each side of the courtyard was built by a different king, in a different era, in a different style. The result is an architectural history lesson written in stone.</p>
+
+                <p>This square is often empty and silent, a stark contrast to the chaotic Pyramid entrance just a few hundred meters away. Tourists rush to the museum. The wise linger here.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>At night, the courtyard is dramatically lit. If you return after dark, you will see the Louvre as the kings saw it: mysterious, imposing, eternal.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 8</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">600 meters</span>
+                    <span class="walking-stat">10 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit north via Pavillon de l'Horloge, cross Rue de Rivoli, and enter Place Colette. The garden entrance is ahead.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=48.8603,2.3378&destination=48.8636,2.3370&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">8</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Jardin du Palais Royal</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">2 Galerie de Montpensier, 75001 Paris</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-08-palais-royal.jpg" alt="Colonnes de Buren black and white striped columns in Palais Royal courtyard with historic arcades behind">
+            </div>
+
+            <div class="stop-body">
+                <p>A stunning, enclosed garden surrounded by arcades. It feels exclusive and hidden, despite being next to the Louvre. Built for Cardinal Richelieu, it later became a hub for revolutionaries, gamblers, and prostitutes in the 18th century before becoming the quiet sanctuary it is today.</p>
+
+                <p>The Colonnes de Buren, the black and white striped columns in the inner courtyard, are a controversial modern art installation from 1986. Parisians hated them at first. Now they are beloved, used as seats, photo backdrops, and playgrounds.</p>
+
+                <p>Read the small brass plaques on the benches. Many are touching love dedications from Parisians. This is where the city keeps its secrets and its hearts.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>The arcades contain some of Paris's most interesting boutiques and one of its oldest restaurants, Le Grand Véfour, where Napoleon and Josephine once dined. Window shopping costs nothing.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">End of Tour Option</div>
+                <p>Juveniles Wine Bar at 47 Rue de Richelieu is a cult favorite for industry insiders. Great wines and unpretentious, high-quality food. Try the country terrine or the daily market special. Perfect reward after five hours of walking.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have walked from the medieval heart of Paris to its royal gardens, from the quiet island where time stopped to the grand courtyards where history was made. You crossed the Seine twice, passed through the Latin Quarter where students once spoke Latin, and ended in a cardinal's secret garden. This is Paris: layers upon layers of history, each step revealing another chapter. The metro awaits at Palais Royal-Musée du Louvre, but perhaps you want one more glass of wine first.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 &middot; For art lovers and history seekers</span>
+        </div>
+    </footer>
+</body>
+</html>
