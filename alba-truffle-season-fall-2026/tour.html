@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hunt for Gold & Gothic Shadows — Alba, Italy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #722F37;
+            --accent-soft: rgba(114, 47, 55, 0.12);
+            --accent-hover: #5A252C;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+            --walk-color: #97C4B8;
+            --walk-soft: rgba(151, 196, 184, 0.15);
+            --food-color: #C9A227;
+            --food-soft: rgba(201, 162, 39, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #A85D66;
+                --accent-soft: rgba(168, 93, 102, 0.15);
+                --accent-hover: #C27580;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AB8A8;
+                --walk-soft: rgba(122, 184, 168, 0.2);
+                --food-color: #D4B83D;
+                --food-soft: rgba(212, 184, 61, 0.2);
+            }
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; font-family: var(--font-body); font-weight: 400; line-height: 1.7; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+        .header { padding: var(--space-lg) var(--space-md); border-bottom: 1px solid var(--border); }
+        .header-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; }
+        .tour-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .tour-location { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+        .hero { padding: var(--space-xl) var(--space-md) var(--space-2xl); text-align: center; }
+        .hero-inner { max-width: var(--content-width); margin: 0 auto; }
+        .hero-badges { display: flex; justify-content: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-md); }
+        .badge { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.4em 1em; border-radius: 2px; }
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+        .badge-season { background: var(--food-soft); color: var(--food-color); }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; margin: 0 0 var(--space-sm); color: var(--text); }
+        .hero-city { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.05em; margin-bottom: var(--space-md); }
+        .hero-subtitle { font-size: 1.15rem; color: var(--text-secondary); max-width: 540px; margin: 0 auto; line-height: 1.6; }
+        .hero-image { margin-top: var(--space-xl); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06); }
+        .hero-image img { width: 100%; height: auto; display: block; }
+        .audio-player { display: flex; align-items: center; gap: var(--space-sm); background: var(--bg-alt); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-sm) var(--space-md); margin: var(--space-lg) auto 0; max-width: 420px; }
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
+        .quick-facts { background: var(--bg-alt); border: 1px solid var(--border); border-radius: 8px; padding: var(--space-md); margin: var(--space-lg) auto; max-width: var(--content-width); }
+        .quick-facts-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .quick-facts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-sm); }
+        .fact-item { display: flex; align-items: flex-start; gap: var(--space-xs); }
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+        .tour-map { max-width: var(--wide-width); margin: var(--space-xl) auto; padding: 0 var(--space-md); }
+        .tour-map-title { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: var(--space-sm); text-align: center; }
+        .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .map-container img { width: 100%; height: auto; display: block; }
+        .map-legend { display: flex; justify-content: center; gap: var(--space-md); margin-top: var(--space-sm); font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker { display: inline-block; flex-shrink: 0; width: 12px !important; height: 12px !important; min-width: 12px; max-width: 12px; min-height: 12px; max-height: 12px; border-radius: 50%; }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route { background: var(--accent); width: 20px !important; height: 3px !important; min-height: 3px; max-height: 3px; border-radius: 2px; }
+        .content { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--space-md); }
+        .stop { padding: var(--space-xl) 0; border-bottom: 1px solid var(--border); opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s ease forwards; }
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:nth-child(6) { animation-delay: 0.35s; }
+        .stop:nth-child(7) { animation-delay: 0.4s; }
+        .stop:nth-child(8) { animation-delay: 0.45s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .stop-header { display: flex; align-items: flex-start; gap: var(--space-md); margin-bottom: var(--space-md); }
+        .stop-number { flex-shrink: 0; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--accent); color: white; font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; border-radius: 50%; }
+        .stop-number.food { background: var(--food-color); }
+        .stop-info { flex: 1; }
+        .stop-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; line-height: 1.3; margin: 0 0 var(--space-xs); color: var(--text); }
+        .stop-meta { display: flex; gap: var(--space-sm); align-items: center; flex-wrap: wrap; }
+        .stop-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); background: var(--accent-soft); padding: 0.3em 0.8em; border-radius: 3px; }
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+        .stop-address { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .stop-image { margin: var(--space-md) 0; border-radius: 6px; overflow: hidden; }
+        .stop-image img { width: 100%; height: auto; display: block; }
+        .stop-body p { margin: 0 0 var(--space-sm); }
+        .stop-body p:last-child { margin-bottom: 0; }
+        .callout { background: var(--bg-alt); border-left: 3px solid var(--accent); padding: var(--space-md); margin: var(--space-md) 0; border-radius: 0 4px 4px 0; }
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+        .callout-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+        .callout p { margin: 0; font-size: 0.95rem; }
+        .walking-segment { background: var(--walk-soft); border-radius: 8px; padding: var(--space-md); margin: var(--space-md) 0; }
+        .walking-header { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+        .walking-icon { color: var(--walk-color); }
+        .walking-title { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+        .walking-stats { display: flex; gap: var(--space-md); margin-left: auto; }
+        .walking-stat { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        .walking-directions { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+        .directions-link { display: inline-flex; align-items: center; gap: 0.4em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--walk-color); text-decoration: none; padding: 0.4em 0.8em; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; transition: all 0.2s ease; }
+        .directions-link:hover { background: var(--bg-alt); border-color: var(--walk-color); }
+        .closing { padding: var(--space-2xl) var(--space-md); text-align: center; background: var(--bg-alt); }
+        .closing-inner { max-width: var(--content-width); margin: 0 auto; }
+        .closing-title { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; margin: 0 0 var(--space-sm); }
+        .closing-text { color: var(--text-secondary); margin: 0 0 var(--space-md); }
+        .next-steps { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-sm); margin-top: var(--space-md); }
+        .next-step-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; padding: 0.6em 1.2em; border: 1px solid var(--accent); border-radius: 4px; transition: all 0.2s ease; }
+        .next-step-link:hover { background: var(--accent); color: white; }
+        .footer { padding: var(--space-lg) var(--space-md); border-top: 1px solid var(--border); }
+        .footer-inner { max-width: var(--content-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-sm); }
+        .footer-brand { font-family: var(--font-display); font-size: 0.9rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .footer-meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-secondary); }
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+        @media print { .header, .footer, .audio-player, .directions-link { display: none; } .stop { break-inside: avoid; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Alba, Italy</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">3 hours</span>
+                <span class="badge badge-distance">2.5 kilometers</span>
+                <span class="badge badge-stops">6 stops</span>
+                <span class="badge badge-season">Truffle Season</span>
+            </div>
+            <h1 class="hero-title">The Hunt for Gold & Gothic Shadows</h1>
+            <p class="hero-city">Alba, Italy &middot; November</p>
+            <p class="hero-subtitle">Medieval towers, the world's most precious fungus, and the heart of Piedmont wine country during the legendary White Truffle Fair.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-alba-autumn.jpg" alt="Alba's medieval towers and cobblestone streets in autumn fog">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/alba-truffle-season.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value">10:00 AM to hit the truffle fair early</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Start point:</span>
+                    <span class="fact-value">Piazza Michele Ferrero (5 min from train station)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Weather:</span>
+                    <span class="fact-value">4 to 12 degrees Celsius, foggy mornings</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value">Lunch: 50 to 80 euros. Truffle: 300+ euros.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-overview-map.png" alt="Walking tour route map of Alba historic center">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Piazza Michele Ferrero</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">10 minutes</span>
+                        <span class="stop-address">Piazza Michele Ferrero, 12051 Alba CN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>This elegant square is the living room of modern Alba and the gateway to the medieval old town. It marks the transition from the 19th-century city to the historic core that lies just ahead.</p>
+
+                <p>The piazza was recently renamed after Michele Ferrero of Nutella fame, Alba's most famous industrialist and benefactor. The scent of roasting hazelnuts from the nearby Ferrero factory sometimes drifts across the square, a reminder that you are in the heart of hazelnut country.</p>
+
+                <p>Look for the massive grape bunch sculptures often displayed here, signaling the city's wine heritage. Locals still often call it Piazza Savona, the old name, so if you ask for directions, you might hear both.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Before leaving the square, grab a quick caffe al banco, a standing espresso, at Caffe Calissano on the corner. It is an institution. Ordering at the bar is cheaper than sitting at a table, and it is how the locals do it.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 2</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">350 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk north along Via Vittorio Emanuele II, locally known as Via Maestra. This is the main artery of the city. As you walk, look up to see Liberty-style balconies and medieval facades blending together in a uniquely Piedmontese way.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.6976,8.0335&destination=44.6998,8.0347&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Cortile della Maddalena</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">45 minutes</span>
+                        <span class="stop-address">Via Vittorio Emanuele II, 19</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-02-truffle-market.jpg" alt="White truffles on display at the Alba truffle market">
+            </div>
+
+            <div class="stop-body">
+                <p>This is Ground Zero for the International Alba White Truffle Fair, the Fiera Internazionale del Tartufo Bianco d'Alba. Inside the Mercato Mondiale, you can smell, touch, and buy certified white truffles, the most expensive fungus in the world.</p>
+
+                <p>The complex was originally a convent for Dominican nuns, later an orphanage. Now it houses the heart of the truffle trade. Record-breaking truffles have sold for over 100,000 euros at charity auctions held here, with bidders calling in from Hong Kong and New York.</p>
+
+                <p>Visit the Truffle Sensory Analysis booth. Even if you do not buy, watch the judges weighing and checking the quality of the tubers. The intense, earthy aroma is unforgettable, a mix of garlic, honey, and ancient forest floor.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">Truffle Buying Tip</div>
+                <p>If you buy a truffle, demand the numbered sack. It tracks the truffle back to the seller, guaranteeing quality. This is a right established by the fair's commission. Expect to pay 300 to 600 euros for a decent-sized nugget, roughly 4,000 to 6,000 euros per kilogram.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Best Times</div>
+                <p>Go early around 10 AM to beat the crowds, or late afternoon around 4 PM when the aroma is strongest. On Sundays, look for the folklore events with medieval re-enactments and flag throwers, the Sbandieratori.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 3</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">100 meters</span>
+                    <span class="walking-stat">2 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit the Cortile and turn left, taking the small Via Calissano to reach the imposing brick church nearby.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.6998,8.0347&destination=44.7005,8.0350&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Chiesa di San Domenico</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Via Teobaldo Calissano, 12051 Alba CN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-03-san-domenico.jpg" alt="Gothic interior of Chiesa di San Domenico with medieval frescoes">
+            </div>
+
+            <div class="stop-body">
+                <p>A stunning example of early Italian Gothic architecture that was nearly destroyed by Napoleon's troops, who used it as a stable for their horses. Built in the 13th century, it is no longer a consecrated church but serves as a prestigious exhibition space.</p>
+
+                <p>Look for the frescoes on the pillars, which were only rediscovered in the 20th century under layers of whitewash applied during one of the building's less glorious incarnations. During the Truffle Fair, it often hosts high-end art installations.</p>
+
+                <p>During the plague of 1630, this church was one of the few places residents would go to pray for salvation, leaving graffiti that is still faintly visible in corners.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>The acoustics inside are perfect. If a choir is practicing, step inside immediately. The sound reverberates through the Gothic arches in a way that modern concert halls spend millions trying to replicate.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 4</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">250 meters</span>
+                    <span class="walking-stat">4 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Head back to Via Maestra and continue north. Turn right onto Via Paruzza to find a hidden gem of Roman history. Look for glass panels in the pavement that reveal the ancient city below.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.7005,8.0350&destination=44.7008,8.0360&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Alba Underground</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">45 minutes</span>
+                        <span class="stop-address">Piazza Risorgimento, 2 (Tourist Office)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Alba is a city upon a city. The Roman city of Alba Pompeia lies two to three meters below your feet. The medieval city was built directly on top of the Roman one, preserving temple foundations and roads underground in a remarkable layer cake of history.</p>
+
+                <p>Look for glass panels in the pavement in various spots, like Piazza Pertinace, that look down into Roman ruins. The Alba Sotterranea guided tours, highly recommended for adventurous types, take you into the bowels of the city to see ancient Roman gatehouses and mosaic floors.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Advance Booking</div>
+                <p>Book the Alba Underground tour in advance for a specific time slot. Tours are popular during the truffle fair. If you cannot get a ticket, visit the Federico Eusebio Museum nearby to see the excavated artifacts and get a sense of the Roman city that lies beneath your feet.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 5</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">100 meters</span>
+                    <span class="walking-stat">2 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk to the main central square, Piazza Risorgimento. The Duomo's bell tower will guide you.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.7008,8.0360&destination=44.7009,8.0365&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Piazza Risorgimento and the Duomo</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 minutes</span>
+                        <span class="stop-address">Piazza Risorgimento, 12051 Alba CN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-06-duomo.jpg" alt="Interior of Alba Cathedral with blue vaulted ceiling and gold stars">
+            </div>
+
+            <div class="stop-body">
+                <p>The medieval heartbeat of Alba. This square is dominated by the Cattedrale di San Lorenzo and the Town Hall. It has been the center of political and religious life since Roman times. Look for the Three Towers skyline visible from the corners of the square: Sineo, Bonino, and Astesiano.</p>
+
+                <p>The cathedral is known for its distinct red brick facade and deep blue vaulted ceilings with gold stars, reminiscent of the Basilica in Assisi. Inside, look for the wood-carved choir stalls behind the altar, an intricately detailed masterpiece from the Renaissance.</p>
+
+                <p>Built on top of a Roman temple, the current structure is a mix of Romanesque, Gothic, and Baroque renovations. Legend says the Holy Thorn from Christ's crown is kept here, though it is rarely displayed. The bell tower houses the San Lorenzo bell, which rings a specific peal for the opening of the Truffle Fair.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>It is often colder inside the cathedral than outside in November. Keep your coat on. Look for the bas-reliefs on the Town Hall facade across the square, depicting varied scenes of local history.</p>
+            </div>
+        </article>
+
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Stop 6</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">300 meters</span>
+                    <span class="walking-stat">5 minutes</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk down Via Cavour, a narrower, more medieval-feeling street, towards Piazza Pertinace. This quieter square was historically the market of the peasants.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=44.7009,8.0365&destination=44.7020,8.0355&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">6</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Piazza Pertinace</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">15 minutes</span>
+                        <span class="stop-address">Piazza Elvio Pertinace, 12051 Alba CN</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>A quieter counterpart to Piazza Duomo, historically the market of the peasants. Look for the statue of Publius Helvius Pertinax, a Roman Emperor born in Alba. He reigned for only 87 days during the Year of the Five Emperors in 193 AD before being assassinated by his own guards.</p>
+
+                <p>This square was the site of a silk market in the 1800s. Now it feels much more local. This is a great place to spot residents walking their dogs or chatting over coffee, away from the tourist crowds of Via Maestra. The Castellaccio ruins are visible nearby.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Wine Break</div>
+                <p>Voglia di Vino is located just off this square on Via Elvio Pertinace. It has a cave-like atmosphere in the cellar and extremely knowledgeable staff who love explaining the terroir. Order a flight of Barolo versus Barbaresco, both made from Nebbiolo grapes but grown on different soils with very different characters.</p>
+            </div>
+        </article>
+
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Osteria dell'Arco</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">Lunch: 1.5 hours</span>
+                        <span class="stop-address">Piazza Savona 5 (in a courtyard)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/food-tajarin-truffle.jpg" alt="Tajarin pasta with fresh white truffle shavings and a glass of Barolo">
+            </div>
+
+            <div class="stop-body">
+                <p>A Slow Food osteria that fits the active, adventurous profile perfectly: high quality but unpretentious, lively, and strictly traditional. It adheres to the Slow Food philosophy of good, clean, and fair. The restaurant is tucked into a courtyard off the piazza, away from the noise but close to the action.</p>
+
+                <p>This is where you experience the truffle in its full glory. The staff will bring the truffle to your table and shave it fresh over your dish, releasing that intoxicating aroma.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">What to Order</div>
+                <p>Tajarin, the thin Piedmontese egg noodles, with fresh white truffle shavings. This is the definitive Alba dish during truffle season. Start with Vitello Tonnato, cold veal with tuna sauce, and pair everything with a Barolo or Barbaresco. Expect 50 to 80 euros per person.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">The End of Your Walk</h2>
+            <p class="closing-text">You have walked through layers of history, from Roman Alba Pompeia to medieval towers to the modern temple of the white truffle. The nebbia, the famous Piedmont fog, may be rolling in by now. It is perfect weather for a glass of Barolo and a plate of tajarin. The train station is a five-minute walk from Piazza Michele Ferrero where you began.</p>
+            <div class="next-steps">
+                <a href="../index.html" class="next-step-link">Browse More Tours</a>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=44.6963,8.0315&travelmode=walking" class="next-step-link" target="_blank">Walk to Alba Train Station</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 &middot; For wine lovers during truffle season</span>
+        </div>
+    </footer>
+</body>
+</html>
