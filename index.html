@@ -114,6 +114,65 @@
             margin-bottom: var(--space-md);
         }
 
+        /* ========================================
+           FILTER BAR
+           ======================================== */
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .filter-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            margin-right: var(--space-xs);
+        }
+
+        .filter-btn {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.4em 0.8em;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            background: var(--bg);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        /* ========================================
+           TOURS GRID
+           ======================================== */
+
         .tours-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -126,6 +185,10 @@
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.2s ease;
+        }
+
+        .tour-card.hidden {
+            display: none;
         }
 
         .tour-card:hover {
@@ -207,23 +270,38 @@
             line-height: 1.5;
         }
 
-        .empty-state {
+        /* Empty state when filters hide all */
+        .no-results {
+            display: none;
             text-align: center;
-            padding: var(--space-2xl);
+            padding: var(--space-xl);
             color: var(--text-secondary);
+            grid-column: 1 / -1;
         }
 
-        .empty-state-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-md);
+        .no-results.visible {
+            display: block;
         }
 
-        .empty-state-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--text);
+        .no-results-icon {
+            font-size: 2.5rem;
             margin-bottom: var(--space-sm);
+            opacity: 0.5;
         }
+
+        .no-results-text {
+            font-size: 0.95rem;
+        }
+
+        .no-results-link {
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
 
         .footer {
             padding: var(--space-lg) var(--space-md);
@@ -237,9 +315,22 @@
             color: var(--text-secondary);
         }
 
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+
         @media (max-width: 600px) {
             html {
                 font-size: 16px;
+            }
+
+            .filter-bar {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+
+            .filter-group {
+                flex-wrap: wrap;
             }
 
             .tours-grid {
@@ -260,8 +351,25 @@
     <main class="container">
         <h2 class="section-title">Your Tours</h2>
 
+        <div class="filter-bar">
+            <div class="filter-group">
+                <span class="filter-label">Region</span>
+                <button class="filter-btn active" data-filter="region" data-value="all">All</button>
+                <button class="filter-btn" data-filter="region" data-value="japan">Japan</button>
+                <button class="filter-btn" data-filter="region" data-value="usa">USA</button>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">Season</span>
+                <button class="filter-btn active" data-filter="season" data-value="all">All</button>
+                <button class="filter-btn" data-filter="season" data-value="spring">Spring</button>
+                <button class="filter-btn" data-filter="season" data-value="summer">Summer</button>
+                <button class="filter-btn" data-filter="season" data-value="fall">Fall</button>
+                <button class="filter-btn" data-filter="season" data-value="winter">Winter</button>
+            </div>
+        </div>
+
         <div class="tours-grid">
-            <div class="tour-card">
+            <div class="tour-card" data-region="japan" data-season="spring">
                 <a href="nara-ancient-capitals-spring-2026/tour.html">
                     <img src="nara-ancient-capitals-spring-2026/images/hero-nara-spring.png" alt="Nara deer park in spring" class="tour-image">
                     <div class="tour-info">
@@ -276,7 +384,7 @@
                 </a>
             </div>
 
-            <div class="tour-card">
+            <div class="tour-card" data-region="usa" data-season="spring">
                 <a href="lititz-moravians-makers-march-2026/tour.html">
                     <img src="lititz-moravians-makers-march-2026/images/hero-lititz-spring.jpg" alt="Lititz Springs Park in spring" class="tour-image">
                     <div class="tour-info">
@@ -291,7 +399,7 @@
                 </a>
             </div>
 
-            <div class="tour-card">
+            <div class="tour-card" data-region="japan" data-season="spring">
                 <a href="tokyo-temples-crafts-spring-2026/tour.html">
                     <img src="tokyo-temples-crafts-spring-2026/images/hero-yanaka-spring.jpg" alt="Traditional wooden storefronts in Yanaka with cherry blossoms" class="tour-image">
                     <div class="tour-info">
@@ -306,7 +414,7 @@
                 </a>
             </div>
 
-            <div class="tour-card">
+            <div class="tour-card" data-region="japan" data-season="spring">
                 <a href="osaka-soul-kitchen-spring-2026/tour.html">
                     <img src="osaka-soul-kitchen-spring-2026/images/hero-shinsekai.jpg" alt="Shinsekai neon signs and Tsutenkaku Tower" class="tour-image">
                     <div class="tour-info">
@@ -320,12 +428,120 @@
                     </div>
                 </a>
             </div>
+
+            <div class="no-results">
+                <div class="no-results-icon">🗺️</div>
+                <p class="no-results-text">No tours match these filters. <span class="no-results-link" onclick="resetFilters()">Show all tours</span></p>
+            </div>
         </div>
     </main>
 
     <footer class="footer">
         <p class="footer-text">Generated with Claude Code · Audio powered by Gemini TTS</p>
     </footer>
+
+    <script>
+        // Filter state
+        const filters = {
+            region: 'all',
+            season: 'all'
+        };
+
+        // Initialize from URL hash
+        function initFromHash() {
+            const hash = window.location.hash.slice(1);
+            if (!hash) return;
+
+            const params = hash.split('&');
+            params.forEach(param => {
+                const [key, value] = param.split('=');
+                if (filters.hasOwnProperty(key) && value) {
+                    filters[key] = value;
+                }
+            });
+
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const filter = btn.dataset.filter;
+                const value = btn.dataset.value;
+                btn.classList.toggle('active', filters[filter] === value);
+            });
+
+            applyFilters();
+        }
+
+        // Update URL hash
+        function updateHash() {
+            const parts = [];
+            if (filters.region !== 'all') parts.push(`region=${filters.region}`);
+            if (filters.season !== 'all') parts.push(`season=${filters.season}`);
+
+            if (parts.length > 0) {
+                window.location.hash = parts.join('&');
+            } else {
+                history.replaceState(null, null, window.location.pathname);
+            }
+        }
+
+        // Apply filters to cards
+        function applyFilters() {
+            const cards = document.querySelectorAll('.tour-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const regionMatch = filters.region === 'all' || card.dataset.region === filters.region;
+                const seasonMatch = filters.season === 'all' || card.dataset.season === filters.season;
+
+                if (regionMatch && seasonMatch) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Show/hide no results message
+            const noResults = document.querySelector('.no-results');
+            noResults.classList.toggle('visible', visibleCount === 0);
+        }
+
+        // Reset all filters
+        function resetFilters() {
+            filters.region = 'all';
+            filters.season = 'all';
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.value === 'all');
+            });
+
+            updateHash();
+            applyFilters();
+        }
+
+        // Handle filter button clicks
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                const value = btn.dataset.value;
+
+                // Update state
+                filters[filter] = value;
+
+                // Update button states in this group
+                document.querySelectorAll(`.filter-btn[data-filter="${filter}"]`).forEach(b => {
+                    b.classList.toggle('active', b.dataset.value === value);
+                });
+
+                updateHash();
+                applyFilters();
+            });
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('hashchange', initFromHash);
+
+        // Initialize on page load
+        initFromHash();
+    </script>
 </body>
 </html>
-<!-- Trigger fresh deployment -->
