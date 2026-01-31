@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moravians, Makers & Cocoa Beans — Lititz, PA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --bg-alt: #F5F1EA;
+            --text: #1A1815;
+            --text-secondary: #5C564D;
+            --accent: #6B4423;
+            --accent-soft: rgba(107, 68, 35, 0.12);
+            --accent-hover: #4D3018;
+            --border: #E5E0D8;
+            --border-strong: #D1C9BC;
+
+            --walk-color: #5B8C5A;
+            --walk-soft: rgba(91, 140, 90, 0.15);
+            --food-color: #B8860B;
+            --food-soft: rgba(184, 134, 11, 0.15);
+            --photo-color: #7B68EE;
+            --photo-soft: rgba(123, 104, 238, 0.15);
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Source Sans 3', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-2xl: 6rem;
+
+            --content-width: 680px;
+            --wide-width: 900px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #141210;
+                --bg-alt: #1E1B18;
+                --text: #F5F1EA;
+                --text-secondary: #A69E93;
+                --accent: #A67B5B;
+                --accent-soft: rgba(166, 123, 91, 0.15);
+                --accent-hover: #C49B7B;
+                --border: #2E2A25;
+                --border-strong: #3D3832;
+                --walk-color: #7AAD79;
+                --walk-soft: rgba(122, 173, 121, 0.2);
+                --food-color: #D4A017;
+                --food-soft: rgba(212, 160, 23, 0.2);
+            }
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .header {
+            padding: var(--space-lg) var(--space-md);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .tour-brand {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .tour-location {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .hero {
+            padding: var(--space-xl) var(--space-md) var(--space-2xl);
+            text-align: center;
+        }
+
+        .hero-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-md);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.4em 1em;
+            border-radius: 2px;
+        }
+
+        .badge-duration { background: var(--accent-soft); color: var(--accent); }
+        .badge-distance { background: var(--walk-soft); color: var(--walk-color); }
+        .badge-stops { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin: 0 0 var(--space-sm);
+            color: var(--text);
+        }
+
+        .hero-city {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            margin-top: var(--space-xl);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.06);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .audio-player {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: var(--space-sm) var(--space-md);
+            margin: var(--space-lg) auto 0;
+            max-width: 420px;
+        }
+
+        .audio-player svg { flex-shrink: 0; color: var(--accent); }
+        .audio-player audio { flex: 1; height: 36px; min-width: 0; }
+        .audio-player-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .quick-facts {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) auto;
+            max-width: var(--content-width);
+        }
+
+        .quick-facts-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .quick-facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-sm);
+        }
+
+        .fact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-xs);
+        }
+
+        .fact-icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .fact-content { font-size: 0.9rem; }
+        .fact-label { font-weight: 600; color: var(--text); }
+        .fact-value { color: var(--text-secondary); }
+
+        .tour-map {
+            max-width: var(--wide-width);
+            margin: var(--space-xl) auto;
+            padding: 0 var(--space-md);
+        }
+
+        .tour-map-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+            text-align: center;
+        }
+
+        .map-container {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-sm);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-item { display: flex; align-items: center; gap: 0.4em; }
+        .legend-marker {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 12px !important;
+            height: 12px !important;
+            min-width: 12px;
+            max-width: 12px;
+            min-height: 12px;
+            max-height: 12px;
+            border-radius: 50%;
+        }
+        .legend-marker.numbered { background: #EA4335; }
+        .legend-marker.food { background: var(--food-color); }
+        .legend-marker.route {
+            background: #4A6F5A;
+            width: 20px !important;
+            height: 3px !important;
+            min-height: 3px;
+            max-height: 3px;
+            border-radius: 2px;
+        }
+
+        .content {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .stop {
+            padding: var(--space-xl) 0;
+            border-bottom: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .stop:nth-child(1) { animation-delay: 0.1s; }
+        .stop:nth-child(2) { animation-delay: 0.15s; }
+        .stop:nth-child(3) { animation-delay: 0.2s; }
+        .stop:nth-child(4) { animation-delay: 0.25s; }
+        .stop:nth-child(5) { animation-delay: 0.3s; }
+        .stop:last-child { border-bottom: none; }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stop-header {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .stop-number {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: white;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50%;
+        }
+
+        .stop-number.food { background: var(--food-color); }
+
+        .stop-info { flex: 1; }
+
+        .stop-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0 0 var(--space-xs);
+            color: var(--text);
+        }
+
+        .stop-meta {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .stop-time {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            background: var(--accent-soft);
+            padding: 0.3em 0.8em;
+            border-radius: 3px;
+        }
+
+        .stop-time.food { color: var(--food-color); background: var(--food-soft); }
+
+        .stop-address {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .stop-image {
+            margin: var(--space-md) 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .stop-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .stop-body p {
+            margin: 0 0 var(--space-sm);
+        }
+
+        .stop-body p:last-child { margin-bottom: 0; }
+
+        .callout {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout.tip { border-color: var(--walk-color); }
+        .callout.photo { border-color: var(--photo-color); }
+        .callout.food { border-color: var(--food-color); }
+
+        .callout-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .callout.tip .callout-label { color: var(--walk-color); }
+        .callout.photo .callout-label { color: var(--photo-color); }
+        .callout.food .callout-label { color: var(--food-color); }
+
+        .callout p { margin: 0; font-size: 0.95rem; }
+
+        .walking-segment {
+            background: var(--walk-soft);
+            border-radius: 8px;
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+        }
+
+        .walking-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .walking-icon { color: var(--walk-color); }
+
+        .walking-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text);
+        }
+
+        .walking-stats {
+            display: flex;
+            gap: var(--space-md);
+            margin-left: auto;
+        }
+
+        .walking-stat {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        .walking-directions {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .walking-notice {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: var(--space-sm);
+        }
+
+        .directions-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--walk-color);
+            text-decoration: none;
+            padding: 0.4em 0.8em;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .directions-link:hover {
+            background: var(--bg-alt);
+            border-color: var(--walk-color);
+        }
+
+        .closing {
+            padding: var(--space-2xl) var(--space-md);
+            text-align: center;
+            background: var(--bg-alt);
+        }
+
+        .closing-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+        }
+
+        .closing-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+        }
+
+        .closing-text {
+            color: var(--text-secondary);
+            margin: 0 0 var(--space-md);
+        }
+
+        .footer {
+            padding: var(--space-lg) var(--space-md);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: var(--content-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .footer-meta {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            html { font-size: 16px; }
+            .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
+            .hero { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-badges { flex-direction: column; align-items: center; }
+            .stop { padding: var(--space-lg) 0; }
+            .stop-header { flex-direction: column; gap: var(--space-sm); }
+            .stop-number { width: 40px; height: 40px; font-size: 1rem; }
+            .stop-title { font-size: 1.35rem; }
+            .quick-facts-grid { grid-template-columns: 1fr; }
+            .walking-header { flex-wrap: wrap; }
+            .walking-stats { margin-left: 0; margin-top: var(--space-xs); width: 100%; }
+        }
+
+        @media print {
+            .header, .footer, .audio-player, .directions-link { display: none; }
+            .stop { break-inside: avoid; }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="../index.html" class="tour-brand">Walkies</a>
+            <span class="tour-location">Lititz, Pennsylvania</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-badges">
+                <span class="badge badge-duration">3 hours</span>
+                <span class="badge badge-distance">2.4 kilometers</span>
+                <span class="badge badge-stops">6 stops + food</span>
+            </div>
+            <h1 class="hero-title">Moravians, Makers & Cocoa Beans</h1>
+            <p class="hero-city">Lititz, Pennsylvania · Late March</p>
+            <p class="hero-subtitle">America's coolest small town blends deep Moravian religious history with an industrial heritage of chocolate and pretzels. Walk the same streets as 18th-century settlers and taste traditions that predate Hershey.</p>
+
+            <div class="hero-image">
+                <img src="images/hero-lititz-spring.jpg" alt="Lititz Springs Park in early spring">
+            </div>
+
+            <div class="audio-player">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                <span class="audio-player-label">Audio Guide</span>
+                <audio controls preload="metadata">
+                    <source src="audio/lititz-moravians-makers.wav" type="audio/wav">
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-facts">
+        <h2 class="quick-facts-title">Before You Go</h2>
+        <div class="quick-facts-grid">
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Best start time:</span>
+                    <span class="fact-value"> 10:00 AM (beat pretzel crowds, finish for lunch)</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Parking:</span>
+                    <span class="fact-value"> Lititz Springs Park lot (free) on North Broad Street</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Weather:</span>
+                    <span class="fact-value"> March: 35-55 degrees Fahrenheit, bring layers and waterproof shoes</span>
+                </div>
+            </div>
+            <div class="fact-item">
+                <svg class="fact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <div class="fact-content">
+                    <span class="fact-label">Budget:</span>
+                    <span class="fact-value"> About 30 to 50 dollars (tours, chocolate, food)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-map">
+        <h2 class="tour-map-title">Your Route</h2>
+        <div class="map-container">
+            <img src="images/tour-map.png" alt="Walking tour route map of Lititz">
+        </div>
+        <div class="map-legend">
+            <span class="legend-item"><span class="legend-marker numbered"></span> Tour stops</span>
+            <span class="legend-item"><span class="legend-marker food"></span> Food stop</span>
+            <span class="legend-item"><span class="legend-marker route"></span> Walking route</span>
+        </div>
+    </section>
+
+    <main class="content">
+        <!-- STOP 1: Lititz Springs Park -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">1</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Lititz Springs Park & Welcome Center</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 min</span>
+                        <span class="stop-address">24 North Broad Street, Lititz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>This park is the beating heart of Lititz, and it has been for centuries. Long before the Moravians arrived, Native Americans gathered at this natural spring. When the settlers came in 1756, this reliable water source made their community possible.</p>
+
+                <p>Wander toward the spring itself and look for the Lion's Head carved into the stone wall near the water. A local artist created this in the 1800s, and it's become a beloved landmark. The Victorian-era train station nearby now serves as the Welcome Center, staffed by volunteers who know every corner of this town.</p>
+
+                <p>Dedicated in 1856, this park hosts the oldest continuous Fourth of July celebration in the United States. During the Victorian era, trains would offload thousands of city dwellers here for picnics. The tradition of community gathering has never stopped.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Stop into the Welcome Center to grab a physical map. The volunteers are incredibly knowledgeable and can share stories you won't find in any guidebook.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 1→2 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Wilbur Chocolate</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">100 meters</span>
+                    <span class="walking-stat">2 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit the park toward Broad Street. Directly across the street, you'll see the modern brick building with the Wilbur Chocolate sign. Cross carefully at the crosswalk.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=40.1576,-76.3113&destination=40.1573,-76.3069&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 2: Wilbur Chocolate -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">2</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Wilbur Chocolate Store</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 min</span>
+                        <span class="stop-address">45 North Broad Street, Lititz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-02-wilbur.jpg" alt="Wilbur Chocolate store with artisan chocolates">
+            </div>
+
+            <div class="stop-body">
+                <p>Here's a piece of chocolate trivia that will change how you see Pennsylvania: Wilbur Buds were created in 1894, a full thirteen years before the Hershey Kiss appeared in 1907. This is the original, the one that started it all.</p>
+
+                <p>The original factory is now condos, but this store keeps the legacy alive with pride. Inside, look for the candy kitchen viewing area where you can watch chocolatiers hand-dipping treats using techniques that haven't changed in over a century.</p>
+
+                <p>H.O. Wilbur and Sons moved here in the early 1900s. For decades, the aroma of chocolate production would drift over the entire town. Locals will tell you they could predict the weather by how strong the chocolate smell was in the air.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Don't just buy the Wilbur Buds. Try the chocolate-covered pretzels for a localized sweet and salty combination that captures both of Lititz's famous industries in one bite.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 2→3 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Julius Sturgis Pretzel Bakery</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">800 meters</span>
+                    <span class="walking-stat">10 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit Wilbur and turn left onto Broad Street, then turn left onto Main Street. You are now walking east. Continue until you see the large pretzel sign on the left side of the street.</p>
+            <p class="walking-notice">As you walk down Main Street, watch the architecture change from Victorian commercial buildings to older residential colonial homes. You'll pass the General Sutter Inn on your right—remember this spot for lunch!</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=40.1573,-76.3069&destination=40.1564,-76.3006&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 3: Julius Sturgis Pretzel Bakery -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">3</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Julius Sturgis Pretzel Bakery</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30-45 min</span>
+                        <span class="stop-address">219 East Main Street, Lititz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-03-sturgis.jpg" alt="Julius Sturgis Pretzel Bakery, America's first commercial pretzel bakery">
+            </div>
+
+            <div class="stop-body">
+                <p>You're standing at the first commercial pretzel bakery in America, operating in a house that was built in 1784. Julius Sturgis started baking here in 1861, and the building itself is one of the oldest standing structures in town.</p>
+
+                <p>Inside, look for the original brick ovens and the indented stone on the window sill where apprentices supposedly rested their elbows during their long shifts. The building has been preserved with remarkable care, and you can almost smell the history alongside the fresh dough.</p>
+
+                <p>Legend has it that a hobo gave a baker the recipe for a hard pretzel in exchange for a meal. Whether or not that's true, it's a story that launched an entire industry. Pennsylvania Dutch pretzels became famous across America, and it all started right here.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>You can just visit the shop, but the tour at about four to five dollars lets you try twisting your own soft pretzel. Trust me: it's much harder than it looks, and you'll have new respect for the craft.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 3→4 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Linden Hall</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">100 meters</span>
+                    <span class="walking-stat">1 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Exit Sturgis Bakery and look directly across the street. The sprawling complex of white and brick buildings is Linden Hall. Cross Main Street carefully.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=40.1564,-76.3006&destination=40.1565,-76.3025&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 4: Linden Hall -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">4</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Linden Hall School for Girls</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">10 min</span>
+                        <span class="stop-address">212 East Main Street, Lititz (exterior view)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>Founded in 1746, Linden Hall is the oldest girls' boarding school in the United States. Let that date sink in: this institution was educating young women thirty years before the Declaration of Independence was signed.</p>
+
+                <p>The Moravians believed strongly in equal education for women, a radical concept in the 18th century that set them apart from their contemporaries. Look for the Mary Dixon Memorial Chapel and observe the pristine, uniform colonial architecture connecting the buildings.</p>
+
+                <p>During the Revolutionary War, like many buildings in town, this school was pressed into service as a military hospital. The walls here have witnessed the birth of a nation.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>If the gates are open, walk through the campus courtyard. It feels like stepping directly back into the 1700s, with beautifully maintained grounds and architecture untouched by time.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 4→5 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Moravian Church Square</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">150 meters</span>
+                    <span class="walking-stat">2 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">With Linden Hall on your left, walk west back toward the center of town. Turn left into Church Square—it looks like a private drive but is open to pedestrians.</p>
+            <p class="walking-notice">Notice the sudden quiet. The noise of Main Street fades away completely here. You'll see the massive church ahead and the Sisters' House to your right.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=40.1565,-76.3025&destination=40.1547,-76.3017&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 5: Moravian Church Square -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">5</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Lititz Moravian Church Square</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">20 min</span>
+                        <span class="stop-address">8 Church Square, Lititz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/stop-05-moravian.jpg" alt="Lititz Moravian Church Square with historic 18th century architecture">
+            </div>
+
+            <div class="stop-body">
+                <p>This is the spiritual and architectural anchor of the entire town. The square includes the Church built in 1787, the Brothers' House, and the Sisters' House, all arranged according to Moravian community planning principles.</p>
+
+                <p>Look carefully for the small stone building to the side called the Corpse House, or Leichenkapellchen in German. Bodies were kept here for three days before burial, a Moravian tradition. Behind the church, the cemetery known as God's Acre contains a remarkable sight: all gravestones are flat and equal in size, symbolizing that all are equal in death.</p>
+
+                <p>For a long time, only Moravians were allowed to live in Lititz. This closed community didn't open to outsiders until 1855. You're walking through a place that maintained its religious isolation for nearly a century.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>Look for the separate entrances for men and women on the older buildings. This reflects the Choir system, where the community was divided by age, gender, and marital status—a social organization unique to the Moravians.</p>
+            </div>
+
+            <div class="callout photo">
+                <div class="callout-label">Photo Op</div>
+                <p>The view from the center of the square looking toward the church captures the peaceful colonial atmosphere perfectly. Early morning light is best.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT 5→6 -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Johannes Mueller House</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">200 meters</span>
+                    <span class="walking-stat">3 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Walk back out of Church Square to Main Street. Turn left heading west. Walk about one block. The Johannes Mueller House is on the right side, so you'll need to cross the street.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=40.1547,-76.3017&destination=40.1561,-76.3047&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- STOP 6: Johannes Mueller House -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number">6</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Johannes Mueller House</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time">30 min</span>
+                        <span class="stop-address">137 East Main Street, Lititz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-body">
+                <p>This 1792 house offers something rare: an authentic glimpse into the life of an 18th-century working tradesman rather than a wealthy elite family. Johannes Mueller was a dyer, and his home reflects the practical concerns of a craftsman.</p>
+
+                <p>Look for the distinct Moravian architectural details, particularly the herringbone-patterned doors that were a signature of local craftsmen. The house retains its original character, and costumed guides explain the daily rhythms of early settler life.</p>
+
+                <p>Ask about the hidden chamber and the strict rules of the town council that Mueller had to follow just to live here. The Moravian community regulated everything from building placement to acceptable trades.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Insider Tip</div>
+                <p>In March, they may operate on spring hours, usually weekends only. If the house is closed, the garden behind it is still a beautiful and quiet spot to sit and reflect before heading to lunch.</p>
+            </div>
+        </article>
+
+        <!-- WALKING SEGMENT TO FOOD -->
+        <div class="walking-segment">
+            <div class="walking-header">
+                <svg class="walking-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4h-2l-1 5-3 2v6h3v5h4v-5h3v-6l-3-2-1-5z"/><circle cx="12" cy="2" r="1"/></svg>
+                <span class="walking-title">Walk to Lunch</span>
+                <div class="walking-stats">
+                    <span class="walking-stat">150 meters</span>
+                    <span class="walking-stat">2 min</span>
+                </div>
+            </div>
+            <p class="walking-directions">Continue west on Main Street. The General Sutter Inn is just ahead on your right. The Bulls Head Public House is inside.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&origin=40.1561,-76.3047&destination=40.1559,-76.3065&travelmode=walking" class="directions-link" target="_blank">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Open in Google Maps
+            </a>
+        </div>
+
+        <!-- FOOD STOP -->
+        <article class="stop">
+            <div class="stop-header">
+                <span class="stop-number food">F</span>
+                <div class="stop-info">
+                    <h2 class="stop-title">Bulls Head Public House</h2>
+                    <div class="stop-meta">
+                        <span class="stop-time food">45-60 min</span>
+                        <span class="stop-address">14 East Main Street (inside General Sutter Inn)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stop-image">
+                <img src="images/food-bulls-head.jpg" alt="Bulls Head Public House, a historic British pub inside the General Sutter Inn">
+            </div>
+
+            <div class="stop-body">
+                <p>You've earned a proper meal, and this is the place to have it. The Bulls Head is an authentic British-style pub that's been recognized globally—literally voted one of the best beer bars in the world in online polls.</p>
+
+                <p>The pub sits inside the General Sutter Inn, which dates back to 1764. The building itself is a piece of history, named after John Sutter of California Gold Rush fame who spent his final years in Lititz.</p>
+
+                <p>The atmosphere is lively but not overwhelming, with dark wood, a proper bar, and a selection of craft and cask ales that would impress anyone. Perfect for an adventurous couple who appreciates both history and quality.</p>
+            </div>
+
+            <div class="callout food">
+                <div class="callout-label">What to Order</div>
+                <p>The Fish and Chips are excellent, as are the Scotch Eggs and the Shepherd's Pie. Expect to spend fifteen to twenty-five dollars per person. Be prepared for a lively atmosphere around one o'clock.</p>
+            </div>
+
+            <div class="callout tip">
+                <div class="callout-label">Alternative Option</div>
+                <p>For something lighter, try the Tomato Pie Cafe at 23 North Broad Street near the park. Their savory tomato tart and excellent espresso offer a more casual option at about twelve to twenty dollars per person.</p>
+            </div>
+        </article>
+    </main>
+
+    <section class="closing">
+        <div class="closing-inner">
+            <h2 class="closing-title">Until Next Time</h2>
+            <p class="closing-text">You've walked through a town that's been called America's coolest small town, and now you understand why. From Moravian settlers who believed in equality before it was fashionable, to the entrepreneurs who created iconic American foods, Lititz has always punched above its weight. The chocolate and pretzels are delicious, but the real treat is the living history you've just experienced. Safe travels home.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <a href="../index.html" class="footer-brand">Walkies</a>
+            <span class="footer-meta">Generated January 2026 · Couple in 50s, history & culture focus</span>
+        </div>
+    </footer>
+</body>
+</html>
